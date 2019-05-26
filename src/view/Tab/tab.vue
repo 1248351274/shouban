@@ -1,11 +1,13 @@
 <template>
   <Screen>
+    <!-- <transition name="fade"> -->
       <heads :title=title></heads>
       <home v-if="tabIndex==0"/>
       <dynamic v-if="tabIndex==1"/>
       <shopCar v-if="tabIndex==2"/>
       <user v-if="tabIndex==3"/>
       <foot :data="can" @select="select"></foot>
+    <!-- </transition> -->
   </Screen>
 </template>
 

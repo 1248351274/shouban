@@ -1,4 +1,11 @@
 <template>
+<Srceen>
+    <Heads title="店铺信息" >
+        <router-link to="/user/goods" slot="start">
+        返回
+            <!-- <mt-button icon="back">返回</mt-button> -->
+        </router-link>
+    </Heads>
     <div class="sh">
         <mt-header title="店铺信息" class="headerColor">
             <router-link to="/user" slot="left">
@@ -9,8 +16,12 @@
             <img src="@/assets/图.png">
         </mt-cell> -->
         <mt-field label="店铺名称" placeholder="请输入店铺名称" v-model="sname"  style="border:1px solid #ccc"></mt-field>
-        <div @click="xz"><mt-cell title="添加商品" is-link :value="add ? add : '请选择商品'" style="border:1px solid #ccc;border-top:none;width:80%;float:left;"></mt-cell></div>
-        <mt-button type="primary" size="large" @click="addd"  style="float:left;width:20%;height:48px">添加</mt-button>
+        <v-touch @tap="xz">
+            <mt-cell title="添加商品" is-link :value="add ? add : '请选择商品'" style="border:1px solid #ccc;border-top:none;width:80%;float:left;"></mt-cell>
+        </v-touch>
+        <v-touch @tap="addd">
+            <mt-button type="primary" size="large" style="float:left;width:20%;height:48px">添加</mt-button>
+        </v-touch>
         <div style="clear:both"></div>
         <!-- <mt-field label="商品列表" placeholder="请输入手机号" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border:1px solid #ccc"></mt-field> -->
         <mt-cell title="商品列表:"  style="border:1px solid #ccc;border-top:none">
@@ -23,10 +34,14 @@
                     <p class="single">单价:{{item.Goods_Price}}</p>
                     <p class="single">库存:{{item.Goods_Num}}</p>
                 </div>
-                <div class="remove" @click="remove(item.Goods_Id,index)">下架</div>
+                <v-touch @tap="remove(item.Goods_Id,index)">
+                    <div class="remove">下架</div>
+                </v-touch>
             </li>
         </ul>
-        <mt-button type="primary" size="large" @click="sub" style="margin-top:30px">保存</mt-button>
+        <v-touch @tap="sub">
+            <mt-button type="primary" size="large" style="margin-top:30px">保存</mt-button>
+        </v-touch>
         <mt-popup
           v-model="popupVisible"
           position="bottom"
@@ -34,6 +49,7 @@
           <mt-picker :slots="slots" type="time" @change="onValuesChange"></mt-picker>
         </mt-popup>
     </div>
+</Srceen>
 </template>
 <script>
 import {getShopMsg,getAddGoods,addShop,removeShop,editShop} from '@/api/Shop/shop'

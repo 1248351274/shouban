@@ -1,10 +1,17 @@
 <template>
+<Srceen>
+    <Heads title="订单记录" >
+        <router-link to="/user/goods" slot="start">
+        返回
+            <!-- <mt-button icon="back">返回</mt-button> -->
+        </router-link>
+    </Heads>
     <div :class="list.length===0 ? '' : 'jl'">
-        <mt-header title="订单记录" class="headerColor">
+        <!-- <mt-header title="订单记录" class="headerColor">
             <router-link to="/user" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
-        </mt-header>
+        </mt-header> -->
         <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
           <p v-if="list.length===0" style="text-align:center;margin-top:50px">
               <img
@@ -29,6 +36,7 @@
           </ul>
         </mt-loadmore>
     </div>
+</Srceen>
 </template>
 <script>
 import rate from '@/components/rate'

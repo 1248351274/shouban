@@ -1,6 +1,8 @@
 <template>
     <div class="ban-screen">
-       <slot></slot>
+        <!-- <transition name="fade"> -->
+          <slot></slot>
+        <!-- </transition> -->
     </div>
 </template>
 

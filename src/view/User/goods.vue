@@ -1,4 +1,6 @@
 <template>
+<Screen>
+    <Heads title="我的手办" />
     <div class="mygoods">
         <!-- <mt-header title="我的商品" style="background:#35495e">
             <router-link to="/user/goods" slot="left">
@@ -21,9 +23,10 @@
         <!-- <mt-cell title="类型" value="请选择类型" is-link > -->
         <!-- </mt-cell> -->
         <!-- <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
-        <mt-button type="primary" size="large" @click="sub" style="margin-top:30px">保存</mt-button>
+        <v-touch @tap="sub"><mt-button type="primary" size="large" style="margin-top:30px">保存</mt-button> </v-touch>
 
     </div>
+</Screen>
 </template>
 <script>
 import {getGoodsMsg,getTypes,editGoods} from '@/api/User/user'

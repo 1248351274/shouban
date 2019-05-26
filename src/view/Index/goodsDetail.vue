@@ -1,5 +1,7 @@
 <template>
-    <transition name="fade">
+<Screen>
+    <heads :title=title></heads>
+    <!-- <transition name="fade"> -->
         <div>
             <div class="detail-pages">
                 <div class="detail">
@@ -85,7 +87,8 @@
             </div>
             <addCart :shopMsg="detailMsg"></addCart>
         </div>
-    </transition>
+    <!-- </transition> -->
+</Screen>
 </template>
 
 <script>
@@ -102,7 +105,8 @@ export default {
       ip: [],
       selected: '1',
       demsg: [],
-    };
+      title:'手办详情'
+    }
   },
   components: {
     addCart,

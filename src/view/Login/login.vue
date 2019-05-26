@@ -1,6 +1,8 @@
 <template>
+<Screen>
     <div>
-        <mt-header title="登录" style="background:#35495e"></mt-header>
+      <heads title="登录" />
+        <!-- <mt-header title="登录" style="background:#35495e"></mt-header> -->
         <div class="login">
             <mt-field label="手机号" placeholder="请输入手机号" v-model="mob" :attr="{ maxlength: 11 }" class='mtinp'>
                 <img src="@/assets/mob.png" style="padding-right:.625rem /* 10/16 */;display:block;float:left" height="30px" width="22px">
@@ -8,14 +10,14 @@
             <mt-field label="密码" placeholder="请输入密码(6-10位)" v-model="psd" :attr="{ maxlength: 10 }" type="password"  class='mtinp'>
                 <img src="@/assets/pas.png" style="padding-right:.625rem /* 10/16 */;display:block;float:left" height="30px" width="22px">
             </mt-field>
-            <mt-button type="primary" size="large" style="margin-top:30px" @click="login">登录</mt-button>
+            <v-touch  @tap="login"><mt-button type="primary" size="large" style="margin-top:30px" >登录</mt-button></v-touch>
             <div class="sp">
                 <router-link to="/goods"><span>忘记密码</span></router-link>
                 <router-link to="/zc"><span>免费注册</span></router-link>
             </div>
         </div>
     </div>
-
+</Screen>
 </template>
 <script>
 import * as TYPES from '@/store/type'
@@ -29,6 +31,7 @@ export default {
   },
   methods: {
     async login () {
+      console.log('taplogin')
       if (this.mob && this.psd) {
         let data = {
             User_Tel: this.mob,

@@ -1,13 +1,20 @@
 <template>
+<Srceen>
+    <Heads title="我的手办" >
+        <router-link to="/user/goods" slot="start">
+        返回
+            <!-- <mt-button icon="back">返回</mt-button> -->
+        </router-link>
+    </Heads>
     <div class="goodslist">
-        <mt-header title="我的商品" class="headerColor">
+        <!-- <mt-header title="我的商品" class="headerColor">
             <router-link to="/user" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
             <router-link to="/user/addgoo" slot="right">
                 <mt-button>添加</mt-button>
             </router-link>
-        </mt-header>
+        </mt-header> -->
         <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
           <p v-if="goodslist.length===0" style="text-align:center;margin-top:50px">
               <img
@@ -43,14 +50,23 @@
                 <div style="clear:both"></div>
               </div>
               <div class="opera">
-                <mt-button @click="bj(item.Goods_Id)" style="float:left;width:50%;height:100%" size="small"><img src="@/assets/编辑.png" alt=""></mt-button>
-                <mt-button @click="sc(item.Goods_Id,index)" style="float:left;width:50%;height:100%" size="small"><img src="@/assets/删除.png" alt=""></mt-button>
+                <v-touch @tap="bj(item.Goods_Id)">
+                    <mt-button style="float:left;width:50%;height:100%" size="small">
+                        <img src="@/assets/编辑.png" alt="" >
+                    </mt-button>
+                </v-touch>
+                <v-touch @tap="sc(item.Goods_Id,index)">
+                   <mt-button style="float:left;width:50%;height:100%" size="small">
+                       <img src="@/assets/删除.png" alt="">
+                    </mt-button>
+                </v-touch>
               </div>
             </li>
           </ul>
 
         </mt-loadmore>
     </div>
+</Srceen>
 </template>
 <script>
 import {getGoods,getGoodsMsg,delGoods} from '@/api/User/user'

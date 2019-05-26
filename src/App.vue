@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+  <!-- <transition enter-active-class="animated slideInLeft" /> -->
 	<!-- <foot v-if="$route.meta.footer"></foot> -->
       <router-view></router-view>
 
