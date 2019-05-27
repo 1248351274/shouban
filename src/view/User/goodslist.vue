@@ -1,10 +1,17 @@
 <template>
 <Srceen>
-    <Heads title="我的手办" >
-        <router-link to="/user/goods" slot="start">
-        返回
-            <!-- <mt-button icon="back">返回</mt-button> -->
+    <Heads title="我的手办"  start="返回" >
+        <template>
+            <div>
+        <router-link to="/"></router-link>
+            </div>
+        </template>
+        <!-- <start>
+        <router-link to="/">
+        {{"返回"}}
+            <mt-button icon="back">返回</mt-button>
         </router-link>
+        </start> -->
     </Heads>
     <div class="goodslist">
         <!-- <mt-header title="我的商品" class="headerColor">

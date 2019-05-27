@@ -2,7 +2,7 @@
     <div class="ban-head">
       <div class="head-start">
           {{start}}
-          <slot v-if="start" name="start"></slot>
+          <slot v-if="start" name="start" ></slot>
       </div>
       <div class="head-title">
         {{title}}
@@ -18,7 +18,16 @@
 <script>
 export default {
    name: 'Heads',
-   props: ['title','start','end']
+   props: ['title','start','end'],
+   methods: {
+     back() {
+      //  $route.push({
+      //    path:"/"
+      //  })
+      console.log(11111)
+      $router.back('/')
+     }
+   },
 }
 </script>
 <style lang="scss">

@@ -5,6 +5,19 @@ $bg: #ccc;
 $head-title-color: #fff;
 $foot-border-color: #ddd;
 
+body{
+  font-family: -apple-system-font,Helvetica Neue,sans-serif;
+}
+.subButton{
+  background: #ff88bb;
+  color: #fff;
+  height: height(50);
+  width: width(50);
+}
+.headerColor {
+  background: $primary;
+}
+
    
 @function height($h){
   @return $h / 72;

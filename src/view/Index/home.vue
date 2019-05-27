@@ -44,7 +44,7 @@
                     </h4>
                     <!-- <ul class="clearfix"> -->
                         
-                <div v-if="item.type==='库唯'">
+                <div v-if="item.type==='卡通'">
                     <div v-for="(itm,index) in item.list" :key='index' class="item-Div" >
                         <div class="big-div">
                             <div class="state-div">
@@ -172,11 +172,13 @@
               if(type.data.result==1){
                   console.log('typeList',type.data.info);
                   this.typeList = type.data.info;
+
               }else{
                   this.$toast(type.data.info);
               }
             },
             async ser(id){
+                console.log(33333)
               let data = {
                 type : id
               }
@@ -302,20 +304,31 @@
 </script>
 
 <style lang="scss">
-    body {
-        .mint-swipe {
-            // margin-top:50px;
-            width: 100%;
-            height: 200px;
-            // margin-right: 50px;
-            img {
-                width: 100%;
-                height: 200px;
-            }
-            .mint-swipe-indicator {
-                opacity: .6;
+@import '@/style/var.scss';
+    .mint-swipe{
+        height:height(400rem);
+        .mint-swipe-indicators {
+            bottom: 2px;
+            .mint-swipe-indicator{
+                height: height(20rem);
+                width: width(20rem);
             }
         }
+    }
+    body {
+        // .mint-swipe {
+        //     // margin-top:50px;
+        //     width: 100%;
+        //     height: 200px;
+        //     // margin-right: 50px;
+        //     img {
+        //         width: 100%;
+        //         height: 200px;
+        //     }
+        //     .mint-swipe-indicator {
+        //         opacity: .6;
+        //     }
+        // }
         .all-div {
             background: #d1d0d0;
             margin-top:10px;

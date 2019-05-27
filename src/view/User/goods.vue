@@ -1,6 +1,13 @@
 <template>
 <Screen>
-    <Heads title="我的手办" />
+    <Heads title="我的手办" start="返回">
+        <start >
+            <router-link to="/" slot="left">
+            <!-- {{"返回"}}
+                <mt-button icon="back">返回</mt-button> -->
+            </router-link>
+        </start>
+    </Heads>
     <div class="mygoods">
         <!-- <mt-header title="我的商品" style="background:#35495e">
             <router-link to="/user/goods" slot="left">

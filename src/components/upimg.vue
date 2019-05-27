@@ -7,7 +7,7 @@
        	   </div>
            <div class='room_add_img'>
            	    <span><img src="@/assets/add_img.png"></span>
-           	    <span>上传图片</span>
+           	    <span>图片/视频</span>
            	    <input @change='add_img'  type="file">
                  <!-- <file @change='add_img' ></file> -->
            </div>
@@ -144,7 +144,8 @@ export default{
    	 overflow: hidden;
    }
    .room_add_img >span:nth-child(2){
-   	  margin-bottom: 10px;
+       margin-bottom: 10px;
+       font-size:15px;
    }
 
   .room_add_img input{
