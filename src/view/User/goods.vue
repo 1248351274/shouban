@@ -32,7 +32,31 @@
         <!-- <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
         <v-touch @tap="sub"><mt-button type="primary" size="large" style="margin-top:30px">保存</mt-button> </v-touch>
 
+
+   <div v-if="item.type==='卡通'" class="hot">
+                    <div v-for="(itm,index) in item.list" :key='index' class="hot-Div">
+                        <img class="hot-product" :src="ip+itm.img[0].Image_Location" alt="" @click="todet(itm)" >
+                        <span class="hot-title">女王</span>
+                        <span class="introduce">说是带着女王外拍，其实还是主要拍大头贴说</span>
+                        <div class="hot-footer">
+                            <div class="user">
+                                <span class="icon" @click="select(itm,index)" :class="itm.Goods_Like==1?'active':'none'"></span>
+                                <!-- <img class="logo-img" :src="ip+itm.img[0].Image_Location" alt=""> -->
+                                <!-- <img class="user-img" :src="itm.Goods_Like ? 'http://127.0.0.1/wxshop/public/image/20180517/like.png' : 'http://127.0.0.1/wxshop/public/image/20180517/like-e.png'" alt="" /> -->
+                                <span class="user-name">{{itm.Goods_LikeCount}}</span>
+                            </div>
+                            <div class="zan" @click="todet(itm)" >
+                                <img class="zan-img" :src="itm.Goods_Like ? 'http://127.0.0.1/wxshop/public/image/20180517/like.png' : 'http://127.0.0.1/wxshop/public/image/20180517/like-e.png'" alt="" />
+                                <!-- <img src="http://127.0.0.1/wxshop/public/image/20180517/like-e.png" alt=""> -->
+                                <span class="zan-count">7</span>
+                            </div>
+                        </div>
+                        <!-- <img class="car" src="@/assets/cart.png" alt="" @click.stop="toBuy(itm)">  -->
+                    </div>
+                    <!-- </ul> -->
     </div>
+    </div>
+
 </Screen>
 </template>
 <script>

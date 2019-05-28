@@ -1,51 +1,31 @@
 <template>
     <!-- <div> -->
     <Content ScrollY>
-        <div class="home" style="margin-bottom:70px;">
-            <!-- 查询 -->
-            <!-- <Search></Search> -->
-            <!-- 轮播 -->
-            <mt-swipe :auto="4000">
-              	<mt-swipe-item v-for="(banner,index) in bannerList" :key='index'>
-                  <img :src="ip+banner.Ban_Url" :alt="banner.Ban_Name">
-              	</mt-swipe-item>
-            </mt-swipe>
+        <mt-swipe :auto="4000">
+            <mt-swipe-item v-for="(banner,index) in bannerList" :key='index'>
+            <img :src="ip+banner.Ban_Url" :alt="banner.Ban_Name">
+            </mt-swipe-item>
+        </mt-swipe>
+        <Search></Search>
             <!-- 导航栏 -->
-            <div class="all-div">
-                <ul class="type-list clearfix">
-                    <li class="list" v-for="(item,index) in typeList" :key='index'>
-                    <div @click='ser(item.GT_Id)'>
-                        <span class="icon" :style="{background:'url('+ip+item.GT_Image+')',backgroundSize:'cover'} "></span>
-                        <span class="text">{{item.GT_Type}}</span>
-                    </div>
-                    </li>
-                </ul>
+        <div class="type-list">
+            <div @click='ser(item.GT_Id)' v-for="(item,index) in typeList" :key='index' class="list" >
+                <span class="icon" :style="{background:'url('+ip+item.GT_Image+')',backgroundSize:'cover'} "></span>
+                <span class="text">{{item.GT_Type}}</span>
             </div>
-            <!-- <div class="dynamic">
-                <div class="dy-itmes" v-for="(item,index) in dynamicList" :key='index'>
-                    <div @click='ser(item.GT_Id)'>
-                        <span class="icon" :style="{background:'url('+ip+item.DY_Image+')',backgroundSize:'cover'} "></span>
-                        <span class="text">{{item.DY_Type}}</span>
-                    </div>
-                    <img :src="item.img" >
-                    <span>{{item.context}}</span>
-                </div>
-            </div> -->
-            <!-- 动态 -->
-
+        </div>
             <!-- 商品列表 -->
-        <div class="goods clearfix">
+        <div class="goods">
              <!-- :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"  -->
              <mt-loadmore :auto-fill="false" ref="loadmore">
                 <div class="goods-items" v-for="(item,index) in goodsList" :key='index'>
-                    <h4>
+                    <!-- <h4>
                         {{item.type}}
                         <span>P{{index+1}}</span>
-                    </h4>
-                    <!-- <ul class="clearfix"> -->
-                        
-                <div v-if="item.type==='卡通'">
+                    </h4> -->
+
                     <div v-for="(itm,index) in item.list" :key='index' class="item-Div" >
+                        <!-- qqqqq -->
                         <div class="big-div">
                             <div class="state-div">
                                 <img class="product" :src="ip+itm.img[0].Image_Location" alt="" @click="todet(itm)">
@@ -54,7 +34,7 @@
                                         <img src="@/assets/img/relevant.png" alt="">
                                         <span class="title">{{itm.Goods_Remarks}}</span>
                                     </div>
-                                    <span class="t-time">时间：{{itm.Goods_Time}}</span>
+                                    <!-- <span class="t-time">时间：{{getTime(itm.Goods_Time)}}</span> -->
                                 </div>
                            </div>
                            <div class="evaluate-div">
@@ -73,33 +53,11 @@
                            </div>
                         </div>
                     </div>
-                </div>
-                <div v-if="item.type==='热门'" class="hot">
-                    <div v-for="(itm,index) in item.list" :key='index' class="hot-Div">
-                        <img class="hot-product" :src="ip+itm.img[0].Image_Location" alt="" @click="todet(itm)" >
-                        <span class="hot-title">女王</span>
-                        <span class="introduce">说是带着女王外拍，其实还是主要拍大头贴说</span>
-                        <div class="hot-footer">
-                            <div class="user">
-                                <span class="icon" @click="select(itm,index)" :class="itm.Goods_Like==1?'active':'none'"></span>
-                                <!-- <img class="logo-img" :src="ip+itm.img[0].Image_Location" alt=""> -->
-                                <!-- <img class="user-img" :src="itm.Goods_Like ? 'http://127.0.0.1/wxshop/public/image/20180517/like.png' : 'http://127.0.0.1/wxshop/public/image/20180517/like-e.png'" alt="" /> -->
-                                <span class="user-name">{{itm.Goods_LikeCount}}</span>
-                            </div>
-                            <div class="zan" @click="todet(itm)" >
-                                <img class="zan-img" :src="itm.Goods_Like ? 'http://127.0.0.1/wxshop/public/image/20180517/like.png' : 'http://127.0.0.1/wxshop/public/image/20180517/like-e.png'" alt="" />
-                                <!-- <img src="http://127.0.0.1/wxshop/public/image/20180517/like-e.png" alt=""> -->
-                                <span class="zan-count">7</span>
-                            </div>
-                        </div>
-                        <!-- <img class="car" src="@/assets/cart.png" alt="" @click.stop="toBuy(itm)">  -->
-                    </div>
-                    <!-- </ul> -->
-                </div>
+                <!-- </div> -->
                 </div>
               </mt-loadmore>
         </div>
-        </div>
+  
         <addCart :shopMsg="shopMsg"></addCart>
     <!-- </div> -->
     </Content>
@@ -150,7 +108,17 @@
         },
         computed: {
             ...mapState(['test']),
-            ...mapGetters(['home'])
+            ...mapGetters(['home']),
+           getTime(timestamp) {
+                const date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                const Y = date.getFullYear() + '-';
+                const M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+                const D = date.getDate() + ' ';
+                const h = date.getHours() + ':';
+                const m = date.getMinutes() + ':';
+                const s = date.getSeconds();
+                return Y+M+D+h+m+s;
+            },
 
         },
         methods: {
@@ -178,14 +146,15 @@
               }
             },
             async ser(id){
-                console.log(33333)
               let data = {
                 type : id
               }
               let a = await goodShow(data);
               if(a.data.result==1){
                 console.log('goodsList', a.data.info);
+
                 this.goodsList = a.data.info;
+                // this.goodsList.Goods_Time
 
               }else{
                 this.$toast('无此类型的商品')
@@ -224,7 +193,11 @@
             async goodShow(){
               let goods = await goodShow();
               if(goods.data.result==1){
-                  console.log('goodsList',goods.data.info);
+                  console.log('goodsList',goods.data.info[0].list);
+                  for(item in goods.data.info.length){
+                      console.log(22,item)
+                      console.log(111,goods.data.info[item].list)
+                  }
                   this.goodsList = goods.data.info;
               }else{
                   this.$toast(goods.data.info);
@@ -306,7 +279,7 @@
 <style lang="scss">
 @import '@/style/var.scss';
     .mint-swipe{
-        height:height(400rem);
+        height:height(300rem);
         .mint-swipe-indicators {
             bottom: 2px;
             .mint-swipe-indicator{
@@ -315,7 +288,9 @@
             }
         }
     }
-    body {
+    .ban-content {
+        display: flex;
+        flex-direction: column;
         // .mint-swipe {
         //     // margin-top:50px;
         //     width: 100%;
@@ -329,31 +304,29 @@
         //         opacity: .6;
         //     }
         // }
-        .all-div {
-            background: #d1d0d0;
-            margin-top:10px;
-            margin-bottom: 10px;
+        // .all-div {
+        //     background: red;
+
+            // margin-top:10px;
+            // margin-bottom: 10px;
             .type-list {
-                // background: #d1d0d0;
-                background-color: #fff;
-                // border-radius: 5px;
-                overflow: auto;
+                padding:height(30rem) 0;
+                // height: height(200rem);
                 display: flex;
-                justify-content:center;
+                flex-flow: row wrap;
+                justify-content: space-around;
+                align-items: center;
+                background: #fff;
+                // background: red;
                 .list {
-                    width: 20%;
-                    padding: 0 10px;
-                    text-align: center;
-                    float: left;
-                    list-style-type:none;
-                    div {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        text-decoration: none;
+                        // text-decoration: none;
+                        // border:1px red solid;
                         .icon {
-                            flex-direction: column;
-                            display: inline-block;
+                            // flex-direction: column;
+                            // display: inline-block;
                             width: 40px;
                             height: 40px;
                         }
@@ -361,16 +334,18 @@
                             color: #555;
                             font-size: 12px;
                         }
-                    }
+                    // }
                 }
             }
-        }
+        // }
         
-        .dynamic {
-            background-color: #d1d0d0;
-            height: 100px;
-        }
+        // .dynamic {
+        //     background-color: #d1d0d0;
+        //     height: 100px;
+        // }
         .goods {
+            flex:1;
+            display: flex;
             // margin-right: 50px;
             background-color: #e6e3e3;
             .goods-items {
@@ -379,7 +354,8 @@
                     padding: 0 10px;
                     line-height: 36px;
                     font-size: 14px;
-                    background-color: #fff;
+                    // background-color: #fff;
+
                     span {
                         float: right;
                     }
@@ -405,7 +381,7 @@
                             display: flex;
                             flex-direction: column;
                             border-radius: 5px; 
-                            background-color: #fff;
+                            // background-color: #fff;
                             margin: 0 5px;
                             padding: 5px 0;
                             .state-div {
@@ -431,7 +407,7 @@
                                 
                             }
                             .evaluate-div {
-                                background-color: #fff;
+                                // background-color: #fff;
                                 display: flex;
                                 flex-direction: row;
                                 justify-content: space-around; 
@@ -485,7 +461,7 @@
                         margin-left: 5px;
                         padding-left:0.4rem;
                         width: 9rem;
-                        background-color: #fff;
+                        // background-color: #fff;
                         border-radius: 5px;
                         display: flex;
                         flex-direction:column;

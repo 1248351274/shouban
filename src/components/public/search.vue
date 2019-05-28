@@ -1,11 +1,6 @@
 <template>
     <div class="search">
-      <!-- <img class="search-icon" src="../../assets/search.png" alt="">
-      <input class="search-input" v-model="value" type="text" placeholder="          请输入" @keyup.13="search">
-      <span class="search-delete" @click="del">X</span> -->
-      <!-- <input type="text" v-model="value" @click="search" ref="se"> -->
       <mt-search  v-model="value" @blur.native.capture="search" @keyup.enter.native="search" ref="se"></mt-search>
-
     </div>
 
 </template>
@@ -43,36 +38,17 @@
 </script>
 
 <style lang="scss">
+@import '@/style/var.scss';
 .search{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height:50px;
-  width: 100%;
-  z-index: 10;
   .mint-search{
-    height: 50px;
+    height: height(120rem);
   }
   .mint-searchbar{
-    background:rgb(255, 102, 0)
+    background:$primary;
   }
-  // .search-icon{
-  //   position: absolute;
-  //   top: 9px;
-  //   left: 14px;
-  // }
-  // .search-input{
-  //   width: 100%;
-  //   line-height: 26px;
-  //   color: #fff;
-  //   background-color: hsla(0,0%,78%,.6);
-  //   border-radius: 6px;
-  // }
-  // .search-delete{
-  //   color: #fff;
-  //   position: absolute;
-  //   right: 15px;
-  //   top:8px;
-  // }
+  .mint-searchbar-core{
+    font-size: 18px;
+    padding-left:10px;
+  }
 }
 </style>
