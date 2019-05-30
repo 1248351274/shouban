@@ -22,6 +22,7 @@ import AddGoods from "@/view/User/addgoods";
 import Tab from "@/view/Tab/tab";
 import main from "@/view/Index/main";
 import News from "@/components/public/News"
+import dynamicDet from "@/view/ShopCar/dynamicDet";
 Vue.use(Router);
 
 const router = new Router({
@@ -29,9 +30,6 @@ const router = new Router({
     {
       path: "/",
       name: "Tab",
-      // meta: {
-      //   footer: true
-      // },
       component: Tab,
     },
     {
@@ -39,32 +37,86 @@ const router = new Router({
       name: "News",
       component: News,
     },
-    // {
-    //   path: "/",
-    //   name: "home",
-    //   meta: {
-    //     footer: true
-    //   },
-    //   component: Home,
-    // },
     {
       path: "/main",
-      name: "main",
-      // meta: {
-      //   footer: true
-      // },
+      name: "main", 
       component: main,
     },
     {
       path: "/detail",
       name: "detail",
-      // meta: {
-      //   footer: false
-      // },
       component: Detail
       
     },
+    {
+      path: "/login",
+      name: "login",
+      component: Login
+    },
+    {
+      path: "/zc",
+      name: "register",
+      component: Register
+    },
+    {
+      path: "/user/zl",
+      name:'ZL',
+      component: ZL
+    },
+    {
+      path: "/user/qb",
+      name:'QB',
+      component: QB
+    },
+    {
+      path: "/user/shop",
+      name:'Shop',
+      component: Shop
+    },
+    {
+      path: "/user/jl",
+      name:'Jl',
+      component: Jl
+    },
+    {
+      path: "/user/sjl",
+      name:'SJl',
+      component: SJl
+    },
+    {
+      path: "/user/goods",
+      name:'Goods',
+      component: Goods
+    },
+    {
+      path: "/user/upgoo",
+      name:'EditGoods',
+      component: EditGoods
+    },
+    {
+      path: "/user/addgoo",
+      name: 'AddGoods',
+      component: AddGoods
+    },
+    {
+      path: "/dynamicDet",
+      name: "dynamicDet",
+      component: dynamicDet,
+    },
     // {
+    //   path: "/dynamic",
+    //  name: 'dynamic',
+    //   meta: {
+    //     footer: true
+    //   },
+    //   component: Dynamic
+    // }
+    // {
+    //   path: "/detail",
+    //   name: "detail",
+    //   component: addCart
+    // }
+        // {
     //   path: "/shopCar",
     //   name: "shopCar",
     //   meta: {
@@ -82,93 +134,8 @@ const router = new Router({
     //   },
     //   component: User
     // },
-    {
-      path: "/login",
-      name: "login",
-      // meta: {
-      //   footer: true
-      // },
-      component: Login
-    },
-    {
-      path: "/zc",
-      name: "register",
-      // meta: {
-      //   footer: true
-      // },
-      component: Register
-    },
-    {
-      path: "/user/zl",
-      // meta: {
-      //   footer: true
-      // },
-      component: ZL
-    },
-    {
-      path: "/user/qb",
-      // meta: {
-      //   footer: false
-      // },
-      component: QB
-    },
-    {
-      path: "/user/shop",
-      // meta: {
-      //   footer: false
-      // },
-      component: Shop
-    },
-
-    {
-      path: "/user/jl",
-      // meta: {
-      //   footer: false
-      // },
-      component: Jl
-    },
-    {
-      path: "/user/sjl",
-      // meta: {
-      //   footer: false
-      // },
-      component: SJl
-    },
-    {
-      path: "/user/goods",
-      // meta: {
-      //   footer: false
-      // },
-      component: Goods
-    },
-    {
-      path: "/user/upgoo",
-      // meta: {
-      //   footer: false
-      // },
-      component: EditGoods
-    },
-    {
-      path: "/user/addgoo",
-      // meta: {
-      //   footer: false
-      // },
-      component: AddGoods
-    },
-    // {
-    //   path: "/dynamic",
-    //  name: 'dynamic',
-    //   meta: {
-    //     footer: true
-    //   },
-    //   component: Dynamic
-    // }
-    // {
-    //   path: "/detail",
-    //   name: "detail",
-    //   component: addCart
-    // }
   ]
+  
 });
 if (window.localStorage.getItem("token")) {
   store.commit(TYPES.LOGIN, window.localStorage.getItem("token"));

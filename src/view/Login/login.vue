@@ -1,8 +1,8 @@
 <template>
 <Screen>
     <!-- <div> -->
-      <heads title="登录" />
-        <!-- <mt-header title="登录" style="background:#35495e"></mt-header> -->
+      <!-- <heads title="登录" /> -->
+        <mt-header title="登录" class="headerColor"></mt-header>
         <Content>
           <div class="logo">
             <img src="@/assets/ban-img/logo.png" alt="logo">

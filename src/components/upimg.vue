@@ -1,18 +1,18 @@
 <template>
-  <div class='finish_room'>
+  <!-- <div class='finish_room'> -->
   	   <div class='finish_room2'>
        	   <div v-for='(item ,index ) in imgs' class='room_img' :key='index'>
        	   	  <img :src="item">
        	   	  <span @click='delete_img(index)'><img src="@/assets/delete.png"></span>
        	   </div>
            <div class='room_add_img'>
-           	    <span><img src="@/assets/add_img.png"></span>
-           	    <span>图片/视频</span>
+           	    <span class="add-img"><img src="@/assets/add_img.png"></span>
+           	    <span class="add-name">图片/视频</span>
            	    <input @change='add_img'  type="file">
                  <!-- <file @change='add_img' ></file> -->
            </div>
        </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script >
@@ -37,6 +37,7 @@ export default{
     },
     methods:{
         async delete_img(item){
+          console.log('jian')
           let l = this.ip.length;
           let data = {
             G_Id : this.G_Id,
@@ -90,71 +91,66 @@ export default{
 }
 
 </script>
-<style scoped >
-	 .finish_room{
-		  width: 100%;
-		  height: auto;
-	  }
+<style scoped lang="scss">
+@import '@/style/var.scss';
 
     .finish_room2{
       width: 100%;
-      height: auto;
+      height: height(570rem);
       padding-top: 15px;
       padding-bottom: 15px;
       display: flex;
-      align-items: center;
-    }
-
-    .finish_room2 .room_img{
-      width: 100px;
-      height: 100px;
-      margin-right: 10px;
-      position: relative;
-      float:left;
-      overflow: hidden;
-    }
-    .finish_room2 .room_img img{
-      width: 100%;
-      height: 100%;
-    }
-    .finish_room2>.room_img span{
-   	  position: absolute;
-   	  width: auto;
-   	  height: auto;
-   	  right: 5px;
-   	  bottom:3px;
-    }
-
-
-
+      flex-flow: row wrap;
+      margin-left:10px;
+      /* border:1px red solid; */
+      .room_img{
+        width: width(200rem);
+        height: height(200rem);
+        margin-right: 10px;
+        position: relative;
+        // float:left;
+        // overflow: hidden;
+        span{
+          position: absolute;
+          width: auto;
+          height: auto;
+          right: 5px;
+          bottom:3px;
+        }
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
    .room_add_img{
-   	 width: 98px;
-   	 height: 98px;
-   	 border:1px solid #e1e1e1;
+   	 width: width(190rem);
+   	 height: width(190rem);
+     border:1px solid #e1e1e1;
    	 display: flex;
-   	 flex-direction: column;
-   	 align-items: center;
+      flex-direction: column;
+      flex-flow: column wrap;
+      align-items: center;      
    	 justify-content: space-between;
-   	 position: relative;
+      // position: relative;
+      .add-img{
+        margin-top: 20px;
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+      }
+      .add-name{
+        margin-bottom: 10px;
+        font-size:15px;
+      }
+      input{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        // z-index: 99999;
+        opacity: 0;
+      }
    }
-   .room_add_img >span:nth-child(1){
-   	 margin-top: 20px;
-   	 width: 40px;
-   	 height: 40px;
-   	 overflow: hidden;
-   }
-   .room_add_img >span:nth-child(2){
-       margin-bottom: 10px;
-       font-size:15px;
-   }
-
-  .room_add_img input{
-  	  position: absolute;
-  	  top: 0px;
-  	  left: 0px;
-  	  width: 100%;
-  	  height: 100%;
-  	  z-index: 99999;
-  	  opacity: 0;
-  }
+}
 </style>

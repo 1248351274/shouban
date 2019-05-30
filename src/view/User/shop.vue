@@ -1,17 +1,12 @@
 <template>
 <Srceen>
-    <Heads title="店铺信息" >
-        <router-link to="/user/goods" slot="start">
-        返回
-            <!-- <mt-button icon="back">返回</mt-button> -->
-        </router-link>
-    </Heads>
-    <div class="sh">
+    <!-- <div class="sh"> -->
         <mt-header title="店铺信息" class="headerColor">
-            <router-link to="/user" slot="left">
+            <router-link to="/" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
         </mt-header>
+        <Content ScrollY>
         <!-- <mt-cell title="头像" style='border:0.5px solid #ccc;height:100px' is-link >
             <img src="@/assets/图.png">
         </mt-cell> -->
@@ -48,7 +43,8 @@
           style="width:100%">
           <mt-picker :slots="slots" type="time" @change="onValuesChange"></mt-picker>
         </mt-popup>
-    </div>
+    <!-- </div> -->
+    </Content>
 </Srceen>
 </template>
 <script>

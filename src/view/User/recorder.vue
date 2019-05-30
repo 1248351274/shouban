@@ -1,17 +1,12 @@
 <template>
 <Srceen>
-    <Heads title="订单记录" >
-        <router-link to="/user/goods" slot="start">
-        返回
-            <!-- <mt-button icon="back">返回</mt-button> -->
+    <mt-header title="订单记录" class="headerColor">
+        <router-link to="/" slot="left">
+            <mt-button icon="back">返回</mt-button>
         </router-link>
-    </Heads>
+    </mt-header>
+    <Content ScrollY>
     <div :class="list.length===0 ? '' : 'jl'">
-        <!-- <mt-header title="订单记录" class="headerColor">
-            <router-link to="/user" slot="left">
-                <mt-button icon="back">返回</mt-button>
-            </router-link>
-        </mt-header> -->
         <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
           <p v-if="list.length===0" style="text-align:center;margin-top:50px">
               <img
@@ -24,9 +19,9 @@
                 <span class='sp1'>{{item.Shop}} <span style="color:#ccc;margin-left:20px"> ></span></span>  <span class='sp2'>交易成功</span>
                 <div style="clear:both"></div>
                 <div class='content'>
-                  <div style='width:120px'><img :src="ip+item.Img" alt=""></div>
+                  <div style='width:120px;padding-right:10px'><img :src="ip+item.Img" alt=""></div>
                   <div style='width:160px;height:75px;overflow:hidden'><span>{{item.Remark}}</span></div>
-                  <div style='width:80px'>￥：{{item.Order_Price}}</div>
+                  <div style='width:80px;'>￥：{{item.Order_Price}}</div>
                 </div>
                 <div style="clear:both"></div>
                 <div calss='pri' style="color:rgb(255, 102, 0)">共{{item.Order_Num}}件商品，合计：￥{{item.Order_Price}}<span style="float:right">{{item.Order_Time}}</span></div>
@@ -36,6 +31,7 @@
           </ul>
         </mt-loadmore>
     </div>
+    </Content>
 </Srceen>
 </template>
 <script>
@@ -61,6 +57,7 @@ export default{
             let a = await recorder();
             if(a.data.result==1){
                 this.list = a.data.info;
+                console.log(1122, this.list )
             }else{
                 this.$toast('无订单记录');
             }
@@ -88,8 +85,9 @@ export default{
 }
 </script>
 <style lang="scss">
+@import '@/style/var.scss';
 .jl{
-    background:rgb(238, 233, 233);
+    // background:rgb(238, 233, 233);
     padding-bottom:100px;
     min-height: 100%;
     font-family: Monospace  ;
@@ -109,6 +107,7 @@ export default{
       .content{
         overflow: auto;
         background: rgb(248, 248, 248);
+        margin-bottom:10px;
         div{
           float:left;
         }

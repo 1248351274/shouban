@@ -1,18 +1,17 @@
 <template>
 <Screen>
-    <heads :title=title></heads>
+      <mt-header  :title="detailMsg.Goods_Name" class="headerColor">
+        <router-link to="/" slot="left">
+            <mt-button @click="goBack">返回</mt-button>
+        </router-link>
+      </mt-header>
+    <!-- <heads :title=title></heads> -->
     <!-- <transition name="fade"> -->
+      <Content ScrollY>
         <div>
             <div class="detail-pages">
                 <div class="detail">
-                    <mt-header  :title="detailMsg.Goods_Name" style="background:#35495e">
-                        <router-link to="/" slot="left">
-                            <mt-button @click="goBack">返回</mt-button>
-                        </router-link>
-                        <router-link to="/shopcar" slot="right">
-                            <mt-button >清单</mt-button>
-                        </router-link>
-                    </mt-header>
+               
                     <div class="title-Div">
                       <img :src=ip+demsg.User_Image alt="" class="joinCar">
                       <span class="tit">{{demsg.User_Name}}</span>
@@ -87,6 +86,7 @@
             </div>
             <addCart :shopMsg="detailMsg"></addCart>
         </div>
+      </Content>
     <!-- </transition> -->
 </Screen>
 </template>
@@ -177,6 +177,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/style/var.scss';
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.2s;

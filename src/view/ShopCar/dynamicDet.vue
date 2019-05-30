@@ -1,31 +1,16 @@
 <template>
 <Srceen >
-        <mt-header title="添加手办" class="headerColor">
-            <router-link to="/user/goods" slot="left">
+        <mt-header title="添加动态" class="headerColor">
+            <router-link to="/" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
         </mt-header>
         <Content ScrollY>
-        <mt-field  placeholder="名称  类型型号都是喜欢搜索的" v-model="Mname" class="manualName"></mt-field>
-        <!-- <mt-field label="商品图片" placeholder="" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border:1px solid #ccc;border-top:none"></mt-field> -->
-        <mt-field  placeholder="介绍该手办的详情，能让更多的人记住它" type="textarea" rows="3" v-model="introduction"></mt-field>
-        <mt-field label="价格" placeholder="手办价格" v-model="price" type="number"  class="manualName"></mt-field>
-        <mt-field label="数量" placeholder="手办数量" v-model="num" type="number"  class="manualName"></mt-field>
-        <div @click="lx">
-           <mt-cell title="类型" is-link :value="type ? type : '请选择类型'" style="" class="manualName"></mt-cell>
-        </div>
-        <mt-popup
-          v-model="popupVisible"
-          position="bottom"
-          style="width:100%">
-            <mt-cell title="类型" value="请选择类型" is-link >
-        </mt-cell>
-          <mt-picker :slots="slots" type="time" @change="onValuesChange"></mt-picker>
-        </mt-popup>
+        <mt-field  placeholder="这一刻的想法..." type="textarea" rows="5" v-model="introduction" style="margin-bottom:10px"></mt-field>
         <UpImg v-bind:G_Id="G_Id" v-bind:Imglist="Imglist"></UpImg>
       
         <!-- <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
-        <div @click="sub"><mt-button class="subButton" size="large">保存</mt-button></div>
+        <!-- <div @click="sub"><mt-button class="subButton" size="large">保存</mt-button></div> -->
 <!-- 
     </div> -->
     </Content>

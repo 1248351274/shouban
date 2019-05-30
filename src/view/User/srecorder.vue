@@ -1,17 +1,13 @@
 <template>
 <Srceen>
-    <Heads title="销售记录" >
-        <router-link to="/user/goods" slot="start">
-        返回
-            <!-- <mt-button icon="back">返回</mt-button> -->
-        </router-link>
-    </Heads>
-    <div :class="list.length===0 ? '' : 'sjl'">
-        <!-- <mt-header title="销售记录" class="headerColor">
-            <router-link to="/user" slot="left">
+        <mt-header title="销售记录" class="headerColor">
+            <router-link to="/" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
-        </mt-header> -->
+        </mt-header>
+        <Content ScrollY>
+    <div :class="list.length===0 ? '' : 'sjl'">
+
         <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
           <p v-if="list.length===0" style="text-align:center;margin-top:50px">
               <img
@@ -40,6 +36,7 @@
           </ul>
         </mt-loadmore>
     </div>
+        </Content>
 </Srceen>
 </template>
 <script>

@@ -1,28 +1,24 @@
 <template>
 <Srceen>
-    <Heads title="修改信息" >
-        <router-link to="/user/goods" slot="start">
-        返回
-            <!-- <mt-button icon="back">返回</mt-button> -->
+    <mt-header title="修改信息" class="headerColor">
+        <router-link to="/" slot="left">
+            <mt-button icon="back">返回</mt-button>
         </router-link>
-    </Heads>
+    </mt-header>
+    <Content ScrollY>
     <div class="zl">
-        <!-- <mt-header title="修改信息" class="headerColor">
-            <router-link to="/user" slot="left">
-                <mt-button icon="back">返回</mt-button>
-            </router-link>
-        </mt-header> -->
-        <mt-cell title="头像" style='border:0.5px solid #ccc;height:100px' is-link >
+        <mt-cell title="头像" style='border-bottom:1px solid #ddd;height:100px' is-link >
             <img :src="ip+img">
             <input class="upimg" @change='add_img'  type="file">
         </mt-cell>
-        <mt-field label="用户名" placeholder="请输入用户名" v-model="name"  style="border:1px solid #ccc"></mt-field>
-        <mt-field label="电话" placeholder="请输入手机号" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border:1px solid #ccc"></mt-field>
-        <mt-field label="地址" placeholder="请输入地址" v-model="addr" type="address"  style="border:1px solid #ccc"></mt-field>
+        <mt-field label="用户名" placeholder="请输入用户名" v-model="name"  style="border-bottom:1px solid #ddd;"></mt-field>
+        <mt-field label="电话" placeholder="请输入手机号" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border-bottom:1px solid #ddd;"></mt-field>
+        <mt-field label="地址" placeholder="请输入地址" v-model="addr" type="address"  style="border-bottom:1px solid #ddd;"></mt-field>
         <v-touch @tap="sub">
-            <mt-button type="primary" size="large" @click="sub" style="margin-top:30px">保存</mt-button>
+            <mt-button type="primary" size="large" @click="sub" class="loginBtn">保存</mt-button>
         </v-touch>
     </div>
+        </Content>
 </Srceen>
 </template>
 <script>
@@ -95,7 +91,7 @@ export default{
 }
 </script>
 <style lang="scss">
-
+@import '@/style/var.scss';
 .zl{
     img{
         border-radius:50%;

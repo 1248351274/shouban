@@ -9,9 +9,6 @@
       <div class='name'>{{ usermsg.User_Name }}</div>
     </div>
     <div class='cells'>
-      <mt-cell title="我的购物车" style='border:0.5px solid #ccc' is-link to="/ShopCar">
-        <img slot="icon" width="20"  src="@/assets/积分.png">
-      </mt-cell>
       <mt-cell title="资料" style='border:0.5px solid #ccc' is-link to="/user/zl">
         <img slot="icon" width="20"  src="@/assets/积分.png">
       </mt-cell>
@@ -34,7 +31,9 @@
     </div>
     <div class='cells'>
       <mt-cell title='退出登录' style='border:0.5px solid #ccc'>
-        <mt-button type='primary' size='small' @click='loginout' style="width:60px">退出</mt-button>
+        <v-touch @tap="loginout">
+          <mt-button type='primary' size='small'  style="width:60px">退出</mt-button>
+        </v-touch>
       </mt-cell>
     </div>
   </div>
@@ -69,11 +68,11 @@
                 }
             },
             async loginout(){
-                let a = await login_out();
-                this.$toast(a.data.info);
-                this.$store.commit(TYPES.LOGOUT);
+                // let a = await login_out();
+                // this.$toast(a.data.info);
+                // this.$store.commit(TYPES.LOGOUT);
                 this.$router.push({
-                  path:'/'
+                  path:'/login'
                 })
             },
             a() {

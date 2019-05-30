@@ -1,5 +1,4 @@
 <template>
-    <!-- <div> -->
     <Content ScrollY>
         <mt-swipe :auto="4000">
             <mt-swipe-item v-for="(banner,index) in bannerList" :key='index'>
@@ -7,59 +6,90 @@
             </mt-swipe-item>
         </mt-swipe>
         <Search></Search>
-            <!-- 导航栏 -->
         <div class="type-list">
             <div @click='ser(item.GT_Id)' v-for="(item,index) in typeList" :key='index' class="list" >
                 <span class="icon" :style="{background:'url('+ip+item.GT_Image+')',backgroundSize:'cover'} "></span>
                 <span class="text">{{item.GT_Type}}</span>
             </div>
         </div>
-            <!-- 商品列表 -->
         <div class="goods">
-             <!-- :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"  -->
              <mt-loadmore :auto-fill="false" ref="loadmore">
                 <div class="goods-items" v-for="(item,index) in goodsList" :key='index'>
-                    <!-- <h4>
+                    <h4>
                         {{item.type}}
                         <span>P{{index+1}}</span>
-                    </h4> -->
-
-                    <div v-for="(itm,index) in item.list" :key='index' class="item-Div" >
-                        <!-- qqqqq -->
-                        <div class="big-div">
-                            <div class="state-div">
-                                <img class="product" :src="ip+itm.img[0].Image_Location" alt="" @click="todet(itm)">
-                                <div class="title-Div">
-                                    <div>
-                                        <img src="@/assets/img/relevant.png" alt="">
-                                        <span class="title">{{itm.Goods_Remarks}}</span>
-                                    </div>
-                                    <!-- <span class="t-time">时间：{{getTime(itm.Goods_Time)}}</span> -->
-                                </div>
-                           </div>
-                           <div class="evaluate-div">
-                               <div>
-                                   <span class="icon" @click="select(itm,index)" :class="itm.Goods_Like==1?'active':'none'"></span>
-                                   <span class="zanCount">{{itm.Goods_LikeCount}}</span>
-                               </div>
-                                <div>
-                                    <img class="ev-img" src="@/assets/img/eva.png" alt="">
-                                    <span>2</span>
-                               </div>
-                                <!-- <div>
-                                   <img class="ev-img" @click="likeBtn2()" :src="show2 ? 'http://127.0.0.1/wxshop/public/image/20180517/collection.png' : 'http://127.0.0.1/wxshop/public/image/20180517/collect-n.png'" alt="" />
-                                    <span>6</span>
-                               </div> -->
-                           </div>
+                    </h4>
+                    <div v-for="(itm,index) in item.list" :key='index' class="item-Div"  >
+                        <v-touch @tap="todet(itm)">
+                        <div class="state-div">
+                            <!-- <div class="state-bgimg"></div> -->
+                            <img class="product" :src="ip+itm.img[0].Image_Location" alt="" >
+                            <div class="title-Div">
+                                <!-- <div> -->
+                                    <!-- <img src="@/assets/img/relevant.png" alt=""> -->
+                                    <div class="title-relevant"><span>相关</span></div>
+                                    <span class="title">{{itm.Goods_Remarks}}</span>
+                                <!-- </div> -->
+                                <!-- <span class="t-time">时间：{{ getTime }}</span> -->
+                            </div>
+                        </div>
+                        </v-touch>
+                        <div class="evaluate-div">
+                            <!-- <div>
+                                <span class="icon" @click="select(itm,index)" :class="itm.Goods_Like==1?'active':'none'"></span>
+                                <span class="zanCount">{{itm.Goods_LikeCount}}</span>
+                            </div> -->
+                            <!-- <div>
+                                <img class="ev-img" src="@/assets/img/eva.png" alt="">
+                                <span>{{itm.Goods_LikeCount}}</span>
+                            </div> -->
+                            <!-- <div>
+                                <img class="ev-img" @click="likeBtn2()" :src="show2 ? 'http://127.0.0.1/wxshop/public/image/20180517/collection.png' : 'http://127.0.0.1/wxshop/public/image/20180517/collect-n.png'" alt="" />
+                                <span>6</span>
+                            </div> -->
                         </div>
                     </div>
-                <!-- </div> -->
                 </div>
               </mt-loadmore>
         </div>
   
-        <addCart :shopMsg="shopMsg"></addCart>
+        <!-- <addCart :shopMsg="shopMsg"></addCart> -->
     <!-- </div> -->
+      <!-- <div class="home" style="margin-bottom:70px;">
+            <Search></Search>
+            <mt-swipe :auto="4000">
+              	<mt-swipe-item v-for="(banner,index) in bannerList" :key='index'>
+                  <img :src="ip+banner.Ban_Url" :alt="banner.Ban_Name">
+              	</mt-swipe-item>
+            </mt-swipe>
+            <ul class="type-list clearfix">
+              	<li class="list" v-for="(item,index) in typeList" :key='index'>
+                  <div @click='ser(item.GT_Id)'>
+                    <span class="icon" :style="{background:'url('+ip+item.GT_Image+')',backgroundSize:'cover'} "></span>
+                    <span class="text">{{item.GT_Type}}</span>
+                  </div>
+              	</li>
+            </ul>
+           <div class="goods clearfix">
+             <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
+                <div class="goods-items" v-for="(item,index) in goodsList" :key='index'>
+                    <h4>
+                        {{item.type}}
+                        <span>P{{index+1}}</span>
+                    </h4>
+                    <ul class="clearfix">
+                        <li v-for="(itm,index) in item.list" @click="todet(itm)" :key='index'>
+                            <img class="product" :src="ip+itm.img[0].Image_Location" alt="">
+                            <span class="price">¥{{itm.Goods_Price}}</span>
+                            <span class="name">{{itm.Goods_Name}}</span>
+                            <img class="car" src="@/assets/cart.png" alt="" @click.stop="toBuy(itm)">
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <addCart :shopMsg="shopMsg"></addCart> -->
     </Content>
 
 </template>
@@ -109,17 +139,18 @@
         computed: {
             ...mapState(['test']),
             ...mapGetters(['home']),
-           getTime(timestamp) {
-                const date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-                const Y = date.getFullYear() + '-';
-                const M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-                const D = date.getDate() + ' ';
-                const h = date.getHours() + ':';
-                const m = date.getMinutes() + ':';
-                const s = date.getSeconds();
-                return Y+M+D+h+m+s;
-            },
-
+            // getTime() {
+            //     const date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+            //     const Y = date.getFullYear() + '-';
+            //     const M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            //     const D = date.getDate() + ' ';
+            //     const h = date.getHours() + ':';
+            //     const m = date.getMinutes() + ':';
+            //     const s = date.getSeconds();
+            //     console.log(121212,timestamp)
+            //     console.log(123, Y)
+            //     return Y+M+D+h+m+s;
+            // },
         },
         methods: {
             // async loadTop() {
@@ -135,6 +166,7 @@
             //   this.$toast('无更多信息');
             //   this.$refs.loadmore.onBottomLoaded();
             // },
+
             async getType(){
               let type = await getType();
               if(type.data.result==1){
@@ -146,17 +178,19 @@
               }
             },
             async ser(id){
+                console.log('ser')
               let data = {
                 type : id
               }
               let a = await goodShow(data);
-              if(a.data.result==1){
+              if(a.data.result===1){
                 console.log('goodsList', a.data.info);
 
                 this.goodsList = a.data.info;
                 // this.goodsList.Goods_Time
 
               }else{
+                console.log('serelse');
                 this.$toast('无此类型的商品')
               }
             },
@@ -266,49 +300,31 @@
             //     // console.log(ip+itm.img[0].Image_Location)
             // }
         },
-        mounted() {
+        created () {
             this.a();
             this.getType();
             this.goodShow();
             this.getBanner();
-           //console.log(this)
         }
     }
 </script>
 
 <style lang="scss">
 @import '@/style/var.scss';
-    .mint-swipe{
-        height:height(300rem);
-        .mint-swipe-indicators {
-            bottom: 2px;
-            .mint-swipe-indicator{
-                height: height(20rem);
-                width: width(20rem);
-            }
-        }
-    }
+
     .ban-content {
         display: flex;
         flex-direction: column;
-        // .mint-swipe {
-        //     // margin-top:50px;
-        //     width: 100%;
-        //     height: 200px;
-        //     // margin-right: 50px;
-        //     img {
-        //         width: 100%;
-        //         height: 200px;
-        //     }
-        //     .mint-swipe-indicator {
-        //         opacity: .6;
-        //     }
-        // }
-        // .all-div {
-        //     background: red;
-
-            // margin-top:10px;
-            // margin-bottom: 10px;
+        .mint-swipe{
+            height:300px;
+            .mint-swipe-indicators {
+                bottom: 2px;
+                .mint-swipe-indicator{
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+        }
             .type-list {
                 padding:height(30rem) 0;
                 // height: height(200rem);
@@ -346,19 +362,15 @@
         .goods {
             flex:1;
             display: flex;
-            // margin-right: 50px;
-            background-color: #e6e3e3;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #fdfcfc;
             .goods-items {
-                overflow: auto;
+                // overflow: auto;
                 h4 {
                     padding: 0 10px;
                     line-height: 36px;
                     font-size: 14px;
-                    // background-color: #fff;
-
-                    span {
-                        float: right;
-                    }
                 }
                 h4:before {
                     content: "";
@@ -368,69 +380,82 @@
                     background-color: #e8380d;
                 }
                 .item-Div {
-                    // li {
-                        // border-top: 1px solid #ddd;
-                        // border-bottom: 1px solid #ddd;
-                        // position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 6px 0;
+                    .state-div {
                         display: flex;
-                        flex-direction: column;
-                        width:100%;
-                        // height: 200px;
-                        padding: 6px 0;
-                        .big-div {
+                        flex-direction: row;
+                        justify-content: center;
+                        .product {
+                            // width: width(300rem);
+                            height: height(300rem);
+                            padding: 0 5px;
+                            width: 40%;
+                            // width: 150px;
+                            // height: 120px;
+                        }
+                        .title-Div {
                             display: flex;
-                            flex-direction: column;
-                            border-radius: 5px; 
-                            // background-color: #fff;
-                            margin: 0 5px;
-                            padding: 5px 0;
-                            .state-div {
+                            flex-flow: row nowrap;
+                            justify-content: space-between;
+                            width: 60%;
+                            .title-relevant {
+                                width:50px;
+                                height:20px;
+                                border:solid 1px #f89e62;
+                                box-shadow: #f89e62;
+                                border-radius: 5px;
                                 display: flex;
-                                flex-direction: row;
-                                justify-content: center;
-                                .product {
-                                    padding: 0 5px;
-                                    width: 50%;
-                                    height: 120px;
+                                margin-right: 10px;
+                                span{
+                                    flex: 1;
+                                    font-size: 10px;
+                                    text-align: center;
+                                    color: #f89e62;
                                 }
-                                .title-Div {
-                                    display: flex;
-                                    flex-direction: column;
-                                    justify-content: space-between;
-                                    .title {
-                                        font-size: 0.1rem;
-                                    }
-                                    .t-time {
-                                        font-size: 0.1rem;
-                                    }
-                                }
-                                
                             }
-                            .evaluate-div {
-                                // background-color: #fff;
-                                display: flex;
-                                flex-direction: row;
-                                justify-content: space-around; 
+                            // img{
+                            //     width: 30px;
+                            //     height:15px;
+                            // }
+                            .title {
                                 // border:1px solid red;
-                                .icon {
-                                    margin-left: 6px;
-                                    margin: auto 0;
-                                    padding: 0;
-                                    display: inline-block;
-                                    width: 16px;
-                                    height: 16px;
-                                    background: url("../../assets/img/like.png") no-repeat;
-                                    background-size: cover;
-                                }
-                                .active {
-                                    background: url("../../assets/img/like-e.png") no-repeat;
-                                }
-                                .zanCount{
-                                    padding-right: 10px;
-                                    font-size: 16px;
-                                }
+                                width:80%;
+                                font-size: 16px;
+                            }
+                            .t-time {
+                                font-size: 0.1rem;
                             }
                         }
+                        
+                    }
+                    .evaluate-div {
+                        // background-color: #fff;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around; 
+                        // border:1px solid red;
+                        .icon {
+                            margin-left: 6px;
+                            margin: auto 0;
+                            padding: 0;
+                            display: inline-block;
+                            width: 16px;
+                            height: 16px;
+                            background: url("../../assets/img/like.png") no-repeat;
+                            background-size: cover;
+                        }
+                        .active {
+                            background: url("../../assets/img/like-e.png") no-repeat;
+                        }
+                        .zanCount{
+                            padding-right: 10px;
+                            font-size: 16px;
+                        }
+                    }
+                        // }
                        
                         // .price {
                         //     padding-left: 10px;
@@ -453,75 +478,75 @@
                 //         border-right: 1px solid #ddd;
                 //     }
                 // }
-                .hot{
-                    // border:solid 1px greenyellow;
-                    .hot-Div{
-                        float: left;
-                        margin:0.2rem; 
-                        margin-left: 5px;
-                        padding-left:0.4rem;
-                        width: 9rem;
-                        // background-color: #fff;
-                        border-radius: 5px;
-                        display: flex;
-                        flex-direction:column;
-                        .hot-product{
-                            width: 100%;
-                        }
-                        .hot-title{
-                            font-size: 0.8rem;
-                        }
-                        .introduce{
-                            font-size: 0.5rem;
-                        }
-                        .hot-footer{
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: space-between;
-                            .user{
-                                display: flex;
-                                flex-direction: row;
-                                // border:1px solid red;
-                                // .user-img{
-                                //     width: 1rem;
-                                //     height: 1rem;
-                                //     border-radius: 50%;
-                                // }
-                                .icon {
-                                    margin-left: 6px;
-                                    margin: auto 0;
-                                    padding: 0;
-                                    display: inline-block;
-                                    width: 16px;
-                                    height: 16px;
-                                    background: url("../../assets/img/like.png") no-repeat;
-                                    background-size: cover;
-                                }
-                                .active {
-                                    background: url("../../assets/img/like-e.png") no-repeat;
-                                }
-                                .user-name{
-                                    font-size: 0.1rem;
-                                }
-                            }
-                            .zan{
-                                display: flex;
-                                flex-direction: row;
-                                // border:solid 1px greenyellow;
-                                .zan-img{
-                                    width: 1rem;
-                                    height: 1rem;
-                                    border-radius: 50%;
-                                }
-                                .zan-count{
-                                    font-size: 0.1rem;
-                                    margin-right:5px;
-                                    margin-left:3px;
-                                }
-                            }
-                        }
-                }
-                }
+                // .hot{
+                //     // border:solid 1px greenyellow;
+                //     .hot-Div{
+                //         float: left;
+                //         margin:0.2rem; 
+                //         margin-left: 5px;
+                //         padding-left:0.4rem;
+                //         width: 9rem;
+                //         // background-color: #fff;
+                //         border-radius: 5px;
+                //         display: flex;
+                //         flex-direction:column;
+                //         .hot-product{
+                //             width: 100%;
+                //         }
+                //         .hot-title{
+                //             font-size: 0.8rem;
+                //         }
+                //         .introduce{
+                //             font-size: 0.5rem;
+                //         }
+                //         .hot-footer{
+                //             display: flex;
+                //             flex-direction: row;
+                //             justify-content: space-between;
+                //             .user{
+                //                 display: flex;
+                //                 flex-direction: row;
+                //                 // border:1px solid red;
+                //                 // .user-img{
+                //                 //     width: 1rem;
+                //                 //     height: 1rem;
+                //                 //     border-radius: 50%;
+                //                 // }
+                //                 .icon {
+                //                     margin-left: 6px;
+                //                     margin: auto 0;
+                //                     padding: 0;
+                //                     display: inline-block;
+                //                     width: 16px;
+                //                     height: 16px;
+                //                     background: url("../../assets/img/like.png") no-repeat;
+                //                     background-size: cover;
+                //                 }
+                //                 .active {
+                //                     background: url("../../assets/img/like-e.png") no-repeat;
+                //                 }
+                //                 .user-name{
+                //                     font-size: 0.1rem;
+                //                 }
+                //             }
+                //             .zan{
+                //                 display: flex;
+                //                 flex-direction: row;
+                //                 // border:solid 1px greenyellow;
+                //                 .zan-img{
+                //                     width: 1rem;
+                //                     height: 1rem;
+                //                     border-radius: 50%;
+                //                 }
+                //                 .zan-count{
+                //                     font-size: 0.1rem;
+                //                     margin-right:5px;
+                //                     margin-left:3px;
+                //                 }
+                //             }
+                //         }
+                // }
+                // }
                 
             }
         }
