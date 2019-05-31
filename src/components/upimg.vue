@@ -3,7 +3,7 @@
   	   <div class='finish_room2'>
        	   <div v-for='(item ,index ) in imgs' class='room_img' :key='index'>
        	   	  <img :src="item">
-       	   	  <span @click='delete_img(index)'><img src="@/assets/delete.png"></span>
+       	   	  <span @click='delete_img(index)' class="del-img">-</span>
        	   </div>
            <div class='room_add_img'>
            	    <span class="add-img"><img src="@/assets/add_img.png"></span>
@@ -102,20 +102,26 @@ export default{
       display: flex;
       flex-flow: row wrap;
       margin-left:10px;
+      // background: red;
       /* border:1px red solid; */
       .room_img{
+        flex: 1;
         width: width(200rem);
         height: height(200rem);
         margin-right: 10px;
         position: relative;
         // float:left;
         // overflow: hidden;
-        span{
+        .del-img{
           position: absolute;
           width: auto;
           height: auto;
-          right: 5px;
-          bottom:3px;
+          right: 10px;
+          bottom:10px;
+          width: 10px;
+          height: 10px;
+          border: #e1e1e1 1px solid;
+          border-radius: 50%;
         }
         img{
           width: 100%;
@@ -130,8 +136,9 @@ export default{
       flex-direction: column;
       flex-flow: column wrap;
       align-items: center;      
-   	 justify-content: space-between;
-      // position: relative;
+      justify-content: space-between;
+      // background: red;
+      position: relative;
       .add-img{
         margin-top: 20px;
         width: 40px;
@@ -144,11 +151,15 @@ export default{
       }
       input{
         position: absolute;
-        top: 0px;
-        left: 0px;
+        // border: solid 1px red;
+        // background: red;
+        width: 100px;
+        height:100px;
+        // top: 0px;
+        // left: 0px;
         width: 100%;
         height: 100%;
-        // z-index: 99999;
+        // // z-index: 99999;
         opacity: 0;
       }
    }

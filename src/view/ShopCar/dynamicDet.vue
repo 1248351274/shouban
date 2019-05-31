@@ -44,8 +44,6 @@ export default{
     },
     created () {
        this.getTime()
-       console.log(2121,this.stime1)
-       console.log(21444,this.stime2)
     },
     methods:{
         getTime() {

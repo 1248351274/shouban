@@ -22,8 +22,8 @@
     <div class='cells'>
       <mt-cell title="商品管理" style='border:0.5px solid #ccc;border-top:none' is-link to="user/goods">
       </mt-cell>
-      <mt-cell title="店铺管理" style='border:0.5px solid #ccc;border-top:none' :value="usermsg.Shop_Name" is-link to="user/shop">
-      </mt-cell>
+      <!-- <mt-cell title="店铺管理" style='border:0.5px solid #ccc;border-top:none' :value="usermsg.Shop_Name" is-link to="user/shop"> -->
+      <!-- </mt-cell>  -->
       <mt-cell title="订单记录" style='border:0.5px solid #ccc;border-top:none' is-link to="/user/jl">
       </mt-cell>
       <mt-cell title="销售记录" style='border:0.5px solid #ccc;border-top:none' is-link to="/user/sjl">
@@ -32,7 +32,7 @@
     <div class='cells'>
       <mt-cell title='退出登录' style='border:0.5px solid #ccc'>
         <v-touch @tap="loginout">
-          <mt-button type='primary' size='small'  style="width:60px">退出</mt-button>
+          <mt-button type='primary' size='small' class="outlogin">退出</mt-button>
         </v-touch>
       </mt-cell>
     </div>
@@ -87,31 +87,32 @@
 </script>
 
 <style lang="scss">
+@import '@/style/var.scss';
 .user_center{
   width: 100%;
   height: 100%;
   .banner{
-    height: 8.75rem /* 140/16 */;
+    height:height(400rem)/* 140/16 */;
     background: url(../../assets/banner-.png);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     .banner_img{
-      width: 6.25rem /* 100/16 */;
-      height: 6.25rem /* 100/16 */;
-      img{
-        border-radius:50%;
-      }
+      width: width(200rem) /* 100/16 */;
+      height: height(200rem) /* 100/16 */;
     }
     .name{
-      font-size: .875rem /* 14/16 */;
+      font-size: 28px; /* 14/16 */;
       text-align: center;
     }
   }
   // .cells{
   //   height: 10rem /* 160/16 */;
   // }
+  .outlogin {
+    background: $primary;
+  }
   .fuwu{
     height: 7.5rem /* 120/16 */;
   }

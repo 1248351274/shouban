@@ -7,7 +7,7 @@
     </mt-header>
     <Content ScrollY>
     <div class="zl">
-        <mt-cell title="头像" style='border-bottom:1px solid #ddd;height:100px' is-link >
+        <mt-cell title="头像" is-link >
             <img :src="ip+img">
             <input class="upimg" @change='add_img'  type="file">
         </mt-cell>
@@ -15,7 +15,7 @@
         <mt-field label="电话" placeholder="请输入手机号" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border-bottom:1px solid #ddd;"></mt-field>
         <mt-field label="地址" placeholder="请输入地址" v-model="addr" type="address"  style="border-bottom:1px solid #ddd;"></mt-field>
         <v-touch @tap="sub">
-            <mt-button type="primary" size="large" @click="sub" class="loginBtn">保存</mt-button>
+            <mt-button type="primary" size="large" class="loginBtn">保存</mt-button>
         </v-touch>
     </div>
         </Content>
@@ -78,7 +78,7 @@ export default{
             if(b.data.result==1){
                 this.$toast(b.data.info);
                 this.$router.push({
-                    path:'/user'
+                    path:'/'
                 })
             }else{
                 this.$toast(b.data.info);

@@ -1,6 +1,6 @@
 <template>
 <Srceen>
-        <mt-header title="我的商品" class="headerColor">
+        <mt-header title="我的手办" class="headerColor">
             <router-link to="/" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>

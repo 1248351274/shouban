@@ -12,7 +12,7 @@
                 <div class="dy-Head">
                     <div class="dy-Head-Mes">
                         <!-- <img :src="item.ImgSrc" :alt="item.name"> -->
-                        <Avatar src="http://pic2.cxtuku.com/00/13/02/b709333c25d5.jpg" :size="1.2"/>
+                        <Avatar :src="item.ImgSrc" :size="1.2"/>
                         <!-- <Icon iconName="icon-xiangxia" :size=10 color="$subtitle" style="width:30px;heigth:30px"/> -->
                         <div class="dy-Head-Mes-Name">
                             <span class="N-name">{{item.name}}</span>
@@ -56,39 +56,34 @@ export default {
         return {
             dynamic:[
                 {
-                ImgSrc: require('@/assets/ban-img/d-home.png'),
+                ImgSrc: 'http://pic2.cxtuku.com/00/13/02/b709333c25d5.jpg',
                 name: '桔中带核',
                 date: '今天 9:55',
                 dyContent: '这次出去玩的真开心',
                 imgList: [
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png')
+                    'http://pic2.sc.chinaz.com/Files/pic/pic9/201905/bpic11947_s.jpg',
+                    'http://pic2.sc.chinaz.com/Files/pic/pic9/201905/bpic12001_s.jpg',
+                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11996_s.jpg',
+                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/zzpic18290_s.jpg',
+                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11985_s.jpg',
+                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11984_s.jpg',
+
                 ],
                 zanCount: 3,
                 evCount: 6
                 },
                 {
-                ImgSrc: require('@/assets/ban-img/d-home.png'),
-                name: '桔中带核',
-                date: '今天 9:55',
-                content: '这次出去玩的真开心',
+                ImgSrc: 'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11984_s.jpg',
+                name: '卡通人物',
+                date: '今天 9:51',
+                dyContent: '一起去看没看过的风景',
                 imgList: [
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/img/user_png.png')
+                    'http://pic2.sc.chinaz.com/Files/pic/pic9/201905/bpic11981_s.jpg',
+                    'http://pic2.sc.chinaz.com/Files/pic/pic9/201905/bpic11947_s.jpg',
+                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/zzpic18290_s.jpg',
+                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11985_s.jpg',
+                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11984_s.jpg',
+                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11984_s.jpg',
                 ],
                 zanCount: 3,
                 evCount: 6
@@ -111,36 +106,6 @@ export default {
                 }
                 
             ],
-            bannerList:[
-                {
-                Ban_Name:'首页',
-                icon:[
-                    require('@/assets/img/user_png.png'),
-                    require('@/assets/ban-img/c-home.png')
-                    ]
-                },
-                {
-                label:'动态',
-                icon:[
-                    require('@/assets/ban-img/d-dy.png'),
-                    require('@/assets/ban-img/c-dy.png')
-                    ]
-                },
-                {
-                label:'手办库',
-                icon:[
-                    require('@/assets/ban-img/d-shopcar.png'),
-                    require('@/assets/ban-img/c-shopcar.png')
-                    ]
-                },
-                {
-                label:'个人中心',
-                icon:[
-                    require('@/assets/ban-img/d-mine.png'),
-                    require('@/assets/ban-img/c-mine.png')
-                    ]
-                },
-            ]
         }
     },
     methods: {
@@ -188,30 +153,32 @@ export default {
                 flex-direction: column;
                 margin-left: height(20rem);
                 .N-name{
-                  font-size: fontSize(6em);  
+                  font-size: fontSize(8em);  
                 }
                 .N-date{
                     color: $subtitle;
-                    font-size: fontSize(3em);
+                    font-size: fontSize(5em);
                 }
             }
         }
     }
     .dy-Content {
-    font-size: fontSize(5em);
+    font-size: fontSize(8em);
     }
     .dy-Imgs {
         height: 6.2rem;
         overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
         .dy-img-items {
-           float: left;
-        //    box-sizing:border-box;
-        //    text-align: center;
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
            .dy-img-item {
                height: 3.1rem;
                width:3.1rem;
                margin: 2px 0 0 2px;
-               border-radius:5px;
+            //    border-radius:5px;
            }
         }
     }

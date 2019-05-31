@@ -12,16 +12,16 @@
             <div class="detail-pages">
                 <div class="detail">
                
-                    <div class="title-Div">
+                    <!-- <div class="title-Div">
                       <img :src=ip+demsg.User_Image alt="" class="joinCar">
                       <span class="tit">{{demsg.User_Name}}</span>
-                      <!-- <img src="@/assets/hand.jpg" alt="" class="joinCar"> -->
-                      <!-- <mt-button @click="goBack" class="joinCar">加入清单</mt-button> -->
-                    </div>
-                    <div class="price-Div">
+                      <img src="@/assets/hand.jpg" alt="" class="joinCar">
+                      <mt-button @click="goBack" class="joinCar">加入清单</mt-button>
+                    </div> -->
+                    <!-- <div class="price-Div">
                       <span >价格：</span>
                       <span>日期：</span>
-                    </div>
+                    </div> -->
                     <!-- <div v-for="(url,index) in detailMsg.img" :key="index" class="imgs">
                       <img :src="ip+url.Image_Location" alt="" class="goods-img">
                         <mt-swipe :auto="4000">
@@ -33,10 +33,12 @@
                     <div class="detail">
                         <mt-swipe :auto="4000">
                             <mt-swipe-item v-for="(url,index) in detailMsg.img" :key="index">
+            
                                 <img :src="ip+url.Image_Location" alt="">
                             </mt-swipe-item>
                         </mt-swipe>
                     </div>
+                   
                     <div class="introduce">
                         <p class="introdice-name">{{detailMsg.Goods_Name}}</p>
                         <p class="introdice-detail">{{detailMsg.Goods_Remarks}}</p>
@@ -67,8 +69,8 @@
                     </mt-navbar>
                     <mt-tab-container v-model="selected">
                       <mt-tab-container-item id="1">
-                        <mt-cell title="所属店铺" :value="demsg.shop"></mt-cell>
-                        <mt-cell title="好评率" :value="demsg.eva"></mt-cell>
+                        <mt-cell title="所属店铺" :value="demsg.shop"> 核中有壳</mt-cell>
+                        <mt-cell title="好评率" :value="demsg.eva">100%</mt-cell>
                       </mt-tab-container-item>
                       <mt-tab-container-item id="2">
                         <!-- <rate :grade="3"/> -->
@@ -80,7 +82,7 @@
                     </mt-tab-container>
                 </div>
                 <div class="handle">
-                    <div class="cart" @click="toBuy(detailMsg)">加入清单</div>
+                    <div class="cart" @click="toBuy(detailMsg)">加入手办库</div>
                     <div class="order" @click="toShopCar">立即带走</div>
                 </div>
             </div>
@@ -101,7 +103,7 @@ export default {
   name: "goods-detail",
   data() {
     return {
-      detailMsg: {},
+      detailMsg: [],
       ip: [],
       selected: '1',
       demsg: [],
@@ -116,6 +118,8 @@ export default {
   },
   created () {
     this.a()
+          this.ip = this.config.ip 
+      console.log('ip',this.ip)
   },
   methods: {
     goBack() {
@@ -159,6 +163,7 @@ export default {
     },
     async a() {
       this.detailMsg = JSON.parse(this.$route.query.msg);
+      console.log('this.detailMsg',this.detailMsg)
       let data = {
         gid : this.detailMsg.Goods_Id
       }
@@ -167,7 +172,7 @@ export default {
         this.demsg = a.data.info;
         console.log('this.demsg', this.demsg)
       }
-      this.ip = this.config.ip;
+
     }
   },
   mounted() {
@@ -237,10 +242,10 @@ export default {
     .detail {
       margin-top: -50px;
       .mint-swipe {
-        height: 40vh;
+        height: 50vh;
         img {
           width: 100%;
-          height: 40vh;
+          height: 80vh;
         }
         .mint-swipe-indicator {
           opacity: 0.6;
@@ -303,12 +308,12 @@ export default {
     .cart {
       float: left;
       width: 50%;
-      background-color: #1296db;
+      background: #ff88bb;
     }
     .order {
       float: right;
       width: 50%;
-      background-color: #e8380d;
+      background: #ff88bb;
     }
   }
 
