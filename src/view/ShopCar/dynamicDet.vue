@@ -10,7 +10,7 @@
         <UpImg v-bind:G_Id="G_Id" v-bind:Imglist="Imglist"></UpImg>
       
         <!-- <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
-        <!-- <div @click="sub"><mt-button class="subButton" size="large">保存</mt-button></div> -->
+        <div @click="sub"><mt-button class="subButton" size="large">发布</mt-button></div>
 <!-- 
     </div> -->
     </Content>

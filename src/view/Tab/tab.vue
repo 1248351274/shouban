@@ -4,7 +4,7 @@
       <!-- <heads :title=title></heads> -->
     <mt-header :title=title class="headerColor">
         <router-link to="/dynamicDet" slot="right" v-if="tabIndex==1">
-            <mt-button >添加</mt-button>
+            <mt-button >发布</mt-button>
         </router-link>
     </mt-header>
       <home v-if="tabIndex==0"/>

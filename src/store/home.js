@@ -10,7 +10,8 @@ const state = {
     token: null,
     loginid: null,
     imgid:[],  //上传的图片id
-    footer:true
+    footer:true,
+    userMsg: []
 };
 const getters = {
     staus: state => state.isBlock,

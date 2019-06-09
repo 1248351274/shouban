@@ -12,7 +12,7 @@
                 <img
                     src="@/assets/kong.png"
                     style = 'width:40%;'
-                    alt="购物车为空">
+                    alt="手办库为空">
             </p>
             <ul class="goods-list">
                 <li v-for="(item,index) in orderList" :key='index'>

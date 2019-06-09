@@ -1,22 +1,17 @@
 <template>
 <Srceen>
-    <!-- <div class="sh"> -->
         <mt-header title="店铺信息" class="headerColor">
             <router-link to="/" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
         </mt-header>
-        <Content ScrollY>
         <!-- <mt-cell title="头像" style='border:0.5px solid #ccc;height:100px' is-link >
             <img src="@/assets/图.png">
         </mt-cell> -->
+         <Content ScrollY>
         <mt-field label="店铺名称" placeholder="请输入店铺名称" v-model="sname"  style="border:1px solid #ccc"></mt-field>
-        <v-touch @tap="xz">
-            <mt-cell title="添加商品" is-link :value="add ? add : '请选择商品'" style="border:1px solid #ccc;border-top:none;width:80%;float:left;"></mt-cell>
-        </v-touch>
-        <v-touch @tap="addd">
-            <mt-button type="primary" size="large" style="float:left;width:20%;height:48px">添加</mt-button>
-        </v-touch>
+        <div @click="xz"><mt-cell title="添加商品" is-link :value="add ? add : '请选择商品'" style="border:1px solid #ccc;border-top:none;width:80%;float:left;"></mt-cell></div>
+        <mt-button type="primary" size="large" @click="addd"  style="float:left;width:20%;height:48px;background:#ff88bb">添加</mt-button>
         <div style="clear:both"></div>
         <!-- <mt-field label="商品列表" placeholder="请输入手机号" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border:1px solid #ccc"></mt-field> -->
         <mt-cell title="商品列表:"  style="border:1px solid #ccc;border-top:none">
@@ -29,22 +24,17 @@
                     <p class="single">单价:{{item.Goods_Price}}</p>
                     <p class="single">库存:{{item.Goods_Num}}</p>
                 </div>
-                <v-touch @tap="remove(item.Goods_Id,index)">
-                    <div class="remove">下架</div>
-                </v-touch>
+                <div class="remove" @click="remove(item.Goods_Id,index)">下架</div>
             </li>
         </ul>
-        <v-touch @tap="sub">
-            <mt-button type="primary" size="large" style="margin-top:30px">保存</mt-button>
-        </v-touch>
+        <mt-button type="primary" size="large" @click="sub" style="margin-top:30px;background:#ff88bb">保存</mt-button>
         <mt-popup
           v-model="popupVisible"
           position="bottom"
           style="width:100%">
           <mt-picker :slots="slots" type="time" @change="onValuesChange"></mt-picker>
         </mt-popup>
-    <!-- </div> -->
-    </Content>
+         </Content>
 </Srceen>
 </template>
 <script>
@@ -237,7 +227,7 @@ export default{
           line-height: 50px;
           text-align: center;
           color: #fff;
-          background-color: #e8380d;
+          background-color: #f772b5;
         }
       }
     }

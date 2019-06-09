@@ -1,12 +1,12 @@
 <template>
     <Content ScrollY ScrollX>
         <div class="banner">
-            <mt-swipe :auto="0">
-                <mt-swipe-item v-for="(banner,index) in bannerList" :key='index'>
-                    <!-- <img :src="icon[0]" :alt="banner.Ban_Name"> -->
+            <!-- <mt-swipe :auto="4000">
+                <mt-swipe-item >
+                    <img :src="icon[0]" :alt="banner.Ban_Name">
                     <img src="@/assets/banner-.png" alt="图">
                 </mt-swipe-item>
-            </mt-swipe>
+            </mt-swipe> -->
         </div>
         <div v-for="(item,index) in dynamic" :key="index" class="dynamices">
                 <div class="dy-Head">
@@ -59,14 +59,14 @@ export default {
                 ImgSrc: 'http://pic2.cxtuku.com/00/13/02/b709333c25d5.jpg',
                 name: '桔中带核',
                 date: '今天 9:55',
-                dyContent: '这次出去玩的真开心',
+                dyContent: '珠亿和风穹语手办缘之动漫',
                 imgList: [
-                    'http://pic2.sc.chinaz.com/Files/pic/pic9/201905/bpic11947_s.jpg',
-                    'http://pic2.sc.chinaz.com/Files/pic/pic9/201905/bpic12001_s.jpg',
-                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11996_s.jpg',
-                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/zzpic18290_s.jpg',
-                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11985_s.jpg',
-                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11984_s.jpg',
+                    'https://img.alicdn.com/imgextra/i1/1852234404/O1CN0171eHOO1iP4nlcCv6O_!!0-item_pic.jpg_430x430q90.jpg',
+                    'https://img.alicdn.com/imgextra/i4/1852234404/O1CN012hORQJ1iP4n8jumdu_!!1852234404.jpg',
+                    'https://img.alicdn.com/imgextra/i3/1852234404/O1CN01sVEk151iP4krNrYHM_!!1852234404.jpg',
+                    'https://img.alicdn.com/imgextra/i3/1852234404/O1CN01sVEk151iP4krNrYHM_!!1852234404.jpg',
+                    'https://gd4.alicdn.com/imgextra/i1/112370232/O1CN01qZuHAY1DaIOTwIFoi_!!112370232.jpg',
+                    'https://img.alicdn.com/imgextra/i3/1852234404/O1CN01sVEk151iP4krNrYHM_!!1852234404.jpg',
 
                 ],
                 zanCount: 3,
@@ -76,14 +76,14 @@ export default {
                 ImgSrc: 'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11984_s.jpg',
                 name: '卡通人物',
                 date: '今天 9:51',
-                dyContent: '一起去看没看过的风景',
+                dyContent: '皮卡丘',
                 imgList: [
-                    'http://pic2.sc.chinaz.com/Files/pic/pic9/201905/bpic11981_s.jpg',
-                    'http://pic2.sc.chinaz.com/Files/pic/pic9/201905/bpic11947_s.jpg',
-                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/zzpic18290_s.jpg',
-                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11985_s.jpg',
-                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11984_s.jpg',
-                    'http://pic1.sc.chinaz.com/Files/pic/pic9/201905/bpic11984_s.jpg',
+                    'https://gd2.alicdn.com/imgextra/i3/762126172/O1CN01AnZuef1vSp32AFfi1_!!762126172.jpg',
+                    'https://gd1.alicdn.com/imgextra/i1/762126172/O1CN01OKpgDD1vSp2u1nV2f_!!762126172.jpg',
+                    'https://gd3.alicdn.com/imgextra/i3/762126172/O1CN01M4OYKX1vSp2wS3QMt_!!762126172.jpg ',
+                    'https://gd3.alicdn.com/imgextra/i3/762126172/O1CN01OAO5VG1vSp1hWylh7_!!762126172.jpg',
+                    'https://gd2.alicdn.com/imgextra/i3/762126172/O1CN01AnZuef1vSp32AFfi1_!!762126172.jpg',
+                    'https://gd2.alicdn.com/imgextra/i3/762126172/O1CN01AnZuef1vSp32AFfi1_!!762126172.jpg',
                 ],
                 zanCount: 3,
                 evCount: 6

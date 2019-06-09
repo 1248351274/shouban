@@ -1,11 +1,11 @@
 <template>
     <Content ScrollY>
-        <mt-swipe :auto="4000">
+        <mt-swipe :auto="2000">
             <mt-swipe-item v-for="(banner,index) in bannerList" :key='index'>
             <img :src="ip+banner.Ban_Url" :alt="banner.Ban_Name">
             </mt-swipe-item>
         </mt-swipe>
-        <Search></Search>
+         <Search></Search>
         <div class="type-list">
             <div @click='ser(item.GT_Id)' v-for="(item,index) in typeList" :key='index' class="list" >
                 <span class="icon" :style="{background:'url('+ip+item.GT_Image+')',backgroundSize:'cover'} "></span>
@@ -34,62 +34,12 @@
                             </div>
                         </div>
                         </v-touch>
-                        <div class="evaluate-div">
-                            <!-- <div>
-                                <span class="icon" @click="select(itm,index)" :class="itm.Goods_Like==1?'active':'none'"></span>
-                                <span class="zanCount">{{itm.Goods_LikeCount}}</span>
-                            </div> -->
-                            <!-- <div>
-                                <img class="ev-img" src="@/assets/img/eva.png" alt="">
-                                <span>{{itm.Goods_LikeCount}}</span>
-                            </div> -->
-                            <!-- <div>
-                                <img class="ev-img" @click="likeBtn2()" :src="show2 ? 'http://127.0.0.1/wxshop/public/image/20180517/collection.png' : 'http://127.0.0.1/wxshop/public/image/20180517/collect-n.png'" alt="" />
-                                <span>6</span>
-                            </div> -->
-                        </div>
                     </div>
                 </div>
               </mt-loadmore>
         </div>
   
         <!-- <addCart :shopMsg="shopMsg"></addCart> -->
-    <!-- </div> -->
-      <!-- <div class="home" style="margin-bottom:70px;">
-            <Search></Search>
-            <mt-swipe :auto="4000">
-              	<mt-swipe-item v-for="(banner,index) in bannerList" :key='index'>
-                  <img :src="ip+banner.Ban_Url" :alt="banner.Ban_Name">
-              	</mt-swipe-item>
-            </mt-swipe>
-            <ul class="type-list clearfix">
-              	<li class="list" v-for="(item,index) in typeList" :key='index'>
-                  <div @click='ser(item.GT_Id)'>
-                    <span class="icon" :style="{background:'url('+ip+item.GT_Image+')',backgroundSize:'cover'} "></span>
-                    <span class="text">{{item.GT_Type}}</span>
-                  </div>
-              	</li>
-            </ul>
-           <div class="goods clearfix">
-             <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
-                <div class="goods-items" v-for="(item,index) in goodsList" :key='index'>
-                    <h4>
-                        {{item.type}}
-                        <span>P{{index+1}}</span>
-                    </h4>
-                    <ul class="clearfix">
-                        <li v-for="(itm,index) in item.list" @click="todet(itm)" :key='index'>
-                            <img class="product" :src="ip+itm.img[0].Image_Location" alt="">
-                            <span class="price">¥{{itm.Goods_Price}}</span>
-                            <span class="name">{{itm.Goods_Name}}</span>
-                            <img class="car" src="@/assets/cart.png" alt="" @click.stop="toBuy(itm)">
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-        <addCart :shopMsg="shopMsg"></addCart> -->
     </Content>
 
 </template>
@@ -114,7 +64,6 @@
                 ip:[],
                 bannerList: [],
                 typeList: [],
-                // dynamicList: [],
                 goodsList: [],
                 shopMsg: {}, //点击当前项的数据,
                 // allLoaded:false,
@@ -139,34 +88,8 @@
         computed: {
             ...mapState(['test']),
             ...mapGetters(['home']),
-            // getTime() {
-            //     const date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-            //     const Y = date.getFullYear() + '-';
-            //     const M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-            //     const D = date.getDate() + ' ';
-            //     const h = date.getHours() + ':';
-            //     const m = date.getMinutes() + ':';
-            //     const s = date.getSeconds();
-            //     console.log(121212,timestamp)
-            //     console.log(123, Y)
-            //     return Y+M+D+h+m+s;
-            // },
         },
         methods: {
-            // async loadTop() {
-            //   let a = await goodShow();
-            //   if(a.data.result==1){
-            //       console.log('this.goodsList', a.data.info)
-            //       this.goodsList = a.data.info;
-            //       this.$refs.loadmore.onTopLoaded();
-            //   }
-            // },
-            // loadBottom() {
-            //   this.allLoaded = true;
-            //   this.$toast('无更多信息');
-            //   this.$refs.loadmore.onBottomLoaded();
-            // },
-
             async getType(){
               let type = await getType();
               if(type.data.result==1){
@@ -302,9 +225,10 @@
         },
         created () {
             this.a();
+            this.getBanner();
             this.getType();
             this.goodShow();
-            this.getBanner();
+            
         }
     }
 </script>
@@ -313,52 +237,50 @@
 @import '@/style/var.scss';
 
     .ban-content {
-        display: flex;
-        flex-direction: column;
+        // display: flex;
+        // flex-direction: column;
         .mint-swipe{
-            height:300px;
-            .mint-swipe-indicators {
-                bottom: 2px;
+            // display: flex;
+            // justify-content: center;
+            // background: #e8380d;
+            // border:1px red #f89e62;
+            height: 200px;
+            width:100%;
+            img {
+                width: 100%;
+                height: 200px;
+            }
+            // .mint-swipe-indicators {
+            //     bottom: 2px;
                 .mint-swipe-indicator{
-                    height: 20px;
-                    width: 20px;
+                    opacity: .6;
                 }
+            // }
+        }
+        .type-list {
+            flex: 3;
+            padding:height(30rem) 0;
+            // height: height(200rem);
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            align-items: center;
+            background: #fff;
+            // background: red;
+            .list {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .icon {
+                        width: 40px;
+                        height: 40px;
+                    }
+                    .text {
+                        color: #555;
+                        font-size: 12px;
+                    }
             }
         }
-            .type-list {
-                padding:height(30rem) 0;
-                // height: height(200rem);
-                display: flex;
-                flex-flow: row wrap;
-                justify-content: space-around;
-                align-items: center;
-                background: #fff;
-                // background: red;
-                .list {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        // text-decoration: none;
-                        // border:1px red solid;
-                        .icon {
-                            // flex-direction: column;
-                            // display: inline-block;
-                            width: 40px;
-                            height: 40px;
-                        }
-                        .text {
-                            color: #555;
-                            font-size: 12px;
-                        }
-                    // }
-                }
-            }
-        // }
-        
-        // .dynamic {
-        //     background-color: #d1d0d0;
-        //     height: 100px;
-        // }
         .goods {
             flex:1;
             display: flex;
@@ -416,10 +338,6 @@
                                     color: #f89e62;
                                 }
                             }
-                            // img{
-                            //     width: 30px;
-                            //     height:15px;
-                            // }
                             .title {
                                 // border:1px solid red;
                                 width:80%;
@@ -455,99 +373,7 @@
                             font-size: 16px;
                         }
                     }
-                        // }
-                       
-                        // .price {
-                        //     padding-left: 10px;
-                        //     font-size: 14px;
-                        //     color: #e8380d;
-                        // }
-                        // .name {
-                        //     padding: 10px;
-                        //     font-size: 12px;
-                        // }
-                        // .car {
-                        //     position: absolute;
-                        //     width: 20px;
-                        //     height:20px;
-                        //     bottom: 3px;
-                        //     right: 5px;
-                        // }
                 }
-                //     li:not(:last-child) {
-                //         border-right: 1px solid #ddd;
-                //     }
-                // }
-                // .hot{
-                //     // border:solid 1px greenyellow;
-                //     .hot-Div{
-                //         float: left;
-                //         margin:0.2rem; 
-                //         margin-left: 5px;
-                //         padding-left:0.4rem;
-                //         width: 9rem;
-                //         // background-color: #fff;
-                //         border-radius: 5px;
-                //         display: flex;
-                //         flex-direction:column;
-                //         .hot-product{
-                //             width: 100%;
-                //         }
-                //         .hot-title{
-                //             font-size: 0.8rem;
-                //         }
-                //         .introduce{
-                //             font-size: 0.5rem;
-                //         }
-                //         .hot-footer{
-                //             display: flex;
-                //             flex-direction: row;
-                //             justify-content: space-between;
-                //             .user{
-                //                 display: flex;
-                //                 flex-direction: row;
-                //                 // border:1px solid red;
-                //                 // .user-img{
-                //                 //     width: 1rem;
-                //                 //     height: 1rem;
-                //                 //     border-radius: 50%;
-                //                 // }
-                //                 .icon {
-                //                     margin-left: 6px;
-                //                     margin: auto 0;
-                //                     padding: 0;
-                //                     display: inline-block;
-                //                     width: 16px;
-                //                     height: 16px;
-                //                     background: url("../../assets/img/like.png") no-repeat;
-                //                     background-size: cover;
-                //                 }
-                //                 .active {
-                //                     background: url("../../assets/img/like-e.png") no-repeat;
-                //                 }
-                //                 .user-name{
-                //                     font-size: 0.1rem;
-                //                 }
-                //             }
-                //             .zan{
-                //                 display: flex;
-                //                 flex-direction: row;
-                //                 // border:solid 1px greenyellow;
-                //                 .zan-img{
-                //                     width: 1rem;
-                //                     height: 1rem;
-                //                     border-radius: 50%;
-                //                 }
-                //                 .zan-count{
-                //                     font-size: 0.1rem;
-                //                     margin-right:5px;
-                //                     margin-left:3px;
-                //                 }
-                //             }
-                //         }
-                // }
-                // }
-                
             }
         }
     }

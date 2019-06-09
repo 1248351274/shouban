@@ -28,6 +28,20 @@ Vue.prototype.config = config
 // document.documentElement.style.fontSize = width + 'px'
 
 
+// var fn = function(){
+//   return new Promise(function(resolve,reject){
+//     setTimeout(()=>{
+//       resolve('返回结果')
+//       reject('错误')
+//     },1000)
+//   })
+// }
+
+// fn().then(res=>{
+//   console.log(res)
+// }).catch(err=>{
+//   console.log(err)
+// })
 new Vue({
   el: '#app',
   router,

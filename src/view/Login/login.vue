@@ -36,13 +36,35 @@ import {login} from '@/api/Login/login'
 export default {
   data () {
     return {
-      mob: "15230168328",
+      mob: "15238632359",
       psd: "123456"
     }
   },
   methods: {
+    // verify(type,value,msg){//type:验证的类型，value：：:需要验证的值，msg：验证失败弹出的提示信息
+    //   switch(type){
+    //     case 'tel':
+    //     if (!(/^1[3456789]\d{9}$/).test(value)){
+    //         $toast('手机号不正确')
+    //     }
+    //     case 'password':
+    //     if(!(/^\d{6}$/).test(value)){
+    //       $toast('密码少于六位')
+    //     }
+    //   }
+    // },
     async login () {
       console.log('taplogin')
+
+      if(!(/^1[34578]\d{9}$/).test(this.mob)){
+        this.$toast("手机号不正确")
+      } else{
+        if(!(/^\d{6}$/).test(this.psd)){
+          this.$toast('密码少于六位')
+        }else{
+
+     
+
       if (this.mob && this.psd) {
         let data = {
             User_Tel: this.mob,
@@ -67,6 +89,8 @@ export default {
       } else {
         this.$toast("手机号和密码必填哦😯")
       }
+      }
+         }
     }
   }
 }

@@ -25,8 +25,6 @@ export default {
 .ban-content{
     flex: 1;
     width: 10rem;
-// display: flex;
-
     overflow: hidden;
     &.ban-content-scroll-x{
         overflow-x:auto

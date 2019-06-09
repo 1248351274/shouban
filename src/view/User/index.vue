@@ -22,8 +22,8 @@
     <div class='cells'>
       <mt-cell title="商品管理" style='border:0.5px solid #ccc;border-top:none' is-link to="user/goods">
       </mt-cell>
-      <!-- <mt-cell title="店铺管理" style='border:0.5px solid #ccc;border-top:none' :value="usermsg.Shop_Name" is-link to="user/shop"> -->
-      <!-- </mt-cell>  -->
+      <mt-cell title="店铺管理" style='border:0.5px solid #ccc;border-top:none' :value="usermsg.Shop_Name" is-link to="user/shop">
+      </mt-cell> 
       <mt-cell title="订单记录" style='border:0.5px solid #ccc;border-top:none' is-link to="/user/jl">
       </mt-cell>
       <mt-cell title="销售记录" style='border:0.5px solid #ccc;border-top:none' is-link to="/user/sjl">
