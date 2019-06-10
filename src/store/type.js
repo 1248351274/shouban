@@ -14,3 +14,4 @@ export const DELIMG = 'DELIMG'
 export const RESETIMG = 'RESETIMG'
 export const FOOT_DISPLAY = 'FOOT_DISPLAY'
 export const FOOT_HIDE = 'FOOT_HIDE'
+export const USERMSG = 'USERMSG'//用户注册信息

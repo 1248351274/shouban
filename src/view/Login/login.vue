@@ -37,7 +37,8 @@ export default {
   data () {
     return {
       mob: "15238632359",
-      psd: "123456"
+      psd: "123456",
+      msg: []
     }
   },
   methods: {
@@ -75,10 +76,14 @@ export default {
           this.$toast("登录成功")
           let token = b.data.token
           let loginid = b.data.info.User_Id
-          console.log(token)
+          let userMsg = b.data.info
+          console.log(1,userMsg)
           if (token) {
             this.$store.commit(TYPES.LOGIN, token)
             this.$store.commit(TYPES.LOGINID, loginid)
+            this.$store.commit(TYPES.USERMSG, userMsg)
+            console.log(2,userMsg)
+            console.log(3,this.$store.getters.userMsg)
             this.$router.push({
               path:'/'
             })

@@ -1,13 +1,8 @@
 <template>
     <Content ScrollY ScrollX>
-        <div class="banner">
-            <!-- <mt-swipe :auto="4000">
-                <mt-swipe-item >
-                    <img :src="icon[0]" :alt="banner.Ban_Name">
-                    <img src="@/assets/banner-.png" alt="图">
-                </mt-swipe-item>
-            </mt-swipe> -->
-        </div>
+        <!-- <div class="banner">
+        </div> -->
+        {{userMsg}}
         <div v-for="(item,index) in dynamic" :key="index" class="dynamices">
                 <div class="dy-Head">
                     <div class="dy-Head-Mes">
@@ -49,9 +44,8 @@
     </Content>
 </template>
 <script>
-
+import { mapGetters } from "vuex"
 export default {
-
     data() {
         return {
             dynamic:[
@@ -111,9 +105,16 @@ export default {
     methods: {
         tap() {
             console.log(123)
+            // console.log(321,this.$store.getters.userMsg)
         }
+        
     },
-
+    computed: {
+        ...mapGetters([
+            'footer',
+            'userMsg'
+        ]),
+    },
 }
 </script>
 

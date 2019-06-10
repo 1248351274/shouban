@@ -1,8 +1,8 @@
 <template>
 <Srceen>
     <mt-header  title="注册" class="headerColor">
-        <router-link to="/login" slot="left">
-            <mt-button @click="goBack">返回</mt-button>
+        <router-link to="/login" slot="left">返回
+            <!-- <mt-button @click="goBack">返回</mt-button> -->
         </router-link>
     </mt-header>
     <Content>
@@ -20,9 +20,9 @@
                 <img src="@/assets/pas.png" style="padding-right:.625rem /* 10/16 */;display:block;float:left" height="30px" width="22px">
             </mt-field>
 
-            <!-- <v-touch @tap="register" > -->
+            <v-touch @tap="register" >
                 <mt-button type="primary" size="large" class="loginBtn">注册并登陆</mt-button>
-            <!-- </v-touch> -->
+            </v-touch>
         </div>
     <!-- </div> -->
     </Content>
@@ -52,10 +52,14 @@ export default {
                         this.$toast("登录成功")
                         let token = b.data.token
                         let loginid = b.data.info.User_Id
-                        console.log(token)
+                        let userMsg = b.data.info
+                        console.log('token',token)
+                        console.log('data', userMsg)
                         if (token) {
                             this.$store.commit(TYPES.LOGIN, token)
                             this.$store.commit(TYPES.LOGINID, loginid)
+                            this.$store.commit(TYPES.USERMSG, userMsg)
+                            console.log('userMsg21',this.$store.commit(TYPES.USERMSG, userMsg))
                             this.$router.push({
                                 path:'/'
                             })

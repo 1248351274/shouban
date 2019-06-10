@@ -83,6 +83,7 @@ export default {
         // }
         this.tabIndex = index
         this.title = item.label
+        console.log(this.$router)
 
       }
   },

@@ -23,9 +23,9 @@ const getters = {
         return state.shop_num.find(item => item.Goods_Id === Goods_Id)
     },
     imgid: state => state.imgid,
-    footer: state => state.footer
-};
-
+    footer: state => state.footer,
+    userMsg: state => state.userMsg
+}
 const actions = {
     toDetail({commit}, options) {
         commit(TYPES.TO_DETAIL, {
@@ -190,6 +190,10 @@ const mutations = {
     [TYPES.LOGIN]: (state, data) => {
         localStorage.token = data
         state.token = data
+    },
+    [TYPES.USERMSG]: (state, data) => {
+        localStorage.userMsg = data
+        state.userMsg = data
     },
     [TYPES.LOGOUT]: (state) => {
         localStorage.removeItem('token')
