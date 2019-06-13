@@ -2,10 +2,10 @@ import Vue from "vue";
 import Router from "vue-router";
 import store from "@/store/index";
 import * as TYPES from "@/store/type";
-// import Home from "@/view/Index/home";
+import Home from "@/view/Index/home";
 // import Category from "@/components/category";
-// import ShopCar from "@/view/ShopCar/shopCar";
-// import User from "@/view/User/index";
+import shopCar from "@/view/ShopCar/shopCar";
+import user from "@/view/User/index";
 // import addCart from "@/components/addCart";
 import ZL from "@/view/User/ziliao";
 import Login from "@/view/Login/login";
@@ -18,19 +18,52 @@ import SJl from "@/view/User/srecorder";
 import Goods from "@/view/User/goodslist";
 import EditGoods from "@/view/User/goods";
 import AddGoods from "@/view/User/addgoods";
-// import Dynamic from "@/view/ShopCar/dynamic";
+import Dynamic from "@/view/ShopCar/dynamic";
 import Tab from "@/view/Tab/tab";
 import main from "@/view/Index/main";
 import News from "@/components/public/News"
 import dynamicDet from "@/view/ShopCar/dynamicDet";
+import addrecord from '@/view/admin/addrecord'
+import text from '@/view/admin/text'
 Vue.use(Router);
 
 const router = new Router({
   routes: [
     {
-      path: "/:id",
+      path: "/",
       name: "Tab",
       component: Tab,
+      children:[
+        {
+          path: "/Home",
+          name: "Home",
+          component: Home,
+        },
+        {
+          path: "/user",
+          name: "user",
+          meta: {
+            requireAuth: true
+          },
+          component: user,
+        },
+        {
+          path: "/shopCar",
+          name: "shopCar",
+          meta: {
+            requireAuth: true
+          },
+          component: shopCar,
+        },
+        {
+          path: "/Dynamic",
+          name: "Dynamic",
+          meta: {
+            requireAuth: true
+          },
+          component: Dynamic,
+        },
+      ]
     },
     {
       path: "/News",
@@ -103,37 +136,16 @@ const router = new Router({
       name: "dynamicDet",
       component: dynamicDet,
     },
-    // {
-    //   path: "/dynamic",
-    //  name: 'dynamic',
-    //   meta: {
-    //     footer: true
-    //   },
-    //   component: Dynamic
-    // }
-    // {
-    //   path: "/detail",
-    //   name: "detail",
-    //   component: addCart
-    // }
-        // {
-    //   path: "/shopCar",
-    //   name: "shopCar",
-    //   meta: {
-    //     requireAuth: true,
-    //     footer: false
-    //   },
-    //   component: ShopCar
-    // },
-    // {
-    //   path: "/user",
-    //   name: "user",
-    //   meta: {
-    //     requireAuth: true,
-    //     footer: true
-    //   },
-    //   component: User
-    // },
+    {
+      path: "/addrecord",
+      name: "addrecord",
+      component: addrecord,
+    },
+    {
+      path: "/text",
+      name: "text",
+      component: text,
+    }
   ]
   
 });

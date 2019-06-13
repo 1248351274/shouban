@@ -78,7 +78,7 @@ export default{
             if(b.data.result==1){
                 this.$toast(b.data.info);
                 this.$router.push({
-                    path:'/'
+                    path:'/user'
                 })
             }else{
                 this.$toast(b.data.info);

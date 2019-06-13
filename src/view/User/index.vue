@@ -72,7 +72,7 @@
                 // this.$toast(a.data.info);
                 // this.$store.commit(TYPES.LOGOUT);
                 this.$router.push({
-                  path:'/login'
+                  name: "login"
                 })
             },
             a() {

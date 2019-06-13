@@ -85,7 +85,8 @@ export default {
             console.log(2,userMsg)
             console.log(3,this.$store.getters.userMsg)
             this.$router.push({
-              path:'/'
+              name: "Tab",
+              query:0
             })
           }
         } else {

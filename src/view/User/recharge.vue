@@ -37,7 +37,7 @@ export default{
                     let a = await recharge(dataa);
                     this.$toast(a.data.info)
                     this.$router.push({
-                        path:'/'
+                        path:'/user'
                     })
                 }else{
                     this.$toast('输入数据不合法')

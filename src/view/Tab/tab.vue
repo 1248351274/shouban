@@ -3,14 +3,15 @@
     <!-- <transition name="fade"> -->
       <!-- <heads :title=title></heads> -->
     <mt-header :title=title class="headerColor">
-        <router-link to="/dynamicDet" slot="right" v-if="tabIndex==1">
+        <router-link to="/dynamicDet" slot="right" v-if="this.$route.query.id==1">
             <mt-button >发布</mt-button>
         </router-link>
     </mt-header>
-      <home v-if="tabIndex==0"/>
-      <dynamic v-if="tabIndex==1"/>
-      <shopCar v-if="tabIndex==2"/>
-      <user v-if="tabIndex==3"/>
+      <home v-if="this.tabIndex==0"/>
+      <!-- <dynamic v-if="this.$route.query.id==1"/>
+      <shopCar v-if="this.$route.query.id==2"/>
+      <user v-if="this.$route.query.id==3"/> -->
+      <router-view></router-view>
       <foot :data="can" @select="select"></foot>
     <!-- </transition> -->
   </Screen>
@@ -68,21 +69,28 @@ export default {
   },
   methods: {
       select(item,index){
-        // if(index==0){
-        //   this.$router.push('/')
-        //   console.log(item.label)
-        // }else if(index==1){
-        //   this.$router.push('/shopcar')
-        //   console.log(item.label)
-        // }else if(index==2){
-        //   this.$router.push('/dynamic')
-        //   console.log(item.label)
-        // }else{
-        //   this.$router.push('/dynamic')
-        //   console.log(item.label)
-        // }
+        if(index==0){
+          this.$router.push('/')
+          console.log(item.label)
+        }else if(index==1 ){
+          // if(this.store.state.token){
+          //   console.log('this.store.state.token',this.store.state.token)
+            this.$router.push('/dynamic')
+            console.log(this.store)
+          // }
+          // else{
+          //   this.$router.push('/login')
+          // }
+        }else if(index==2){
+          this.$router.push('/shopcar')
+          console.log(item.label)
+        }else{
+          this.$router.push('/user')
+          console.log(item.label)
+        }
         this.tabIndex = index
         this.title = item.label
+        // this.$route.query.id = index
         console.log(this.$router)
 
       }
