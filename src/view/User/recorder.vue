@@ -24,7 +24,7 @@
                   <div style='width:80px;'>￥：{{item.Order_Price}}</div>
                 </div>
                 <div style="clear:both"></div>
-                <div calss='pri' style="color:rgb(255, 102, 0)">共{{item.Order_Num}}件商品，合计：￥{{item.Order_Price}}<span style="float:right">{{item.Order_Time}}</span></div>
+                <div calss='pri' style="color:rgb(255, 102, 0)">共{{item.Order_Num}}件手办，合计：￥{{item.Order_Price}}<span style="float:right">{{item.Order_Time}}</span></div>
                 <span style="float:left">评价：</span><rate :grade="item.eva? item.eva:0" :hasCounter="item.eva ? true:false" :ordermsg="item" style="float:left;width:85%" />
                 <div style="clear:both"></div>
               </li>

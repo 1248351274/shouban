@@ -81,7 +81,7 @@
                 this.goodsList = a.data.info;
 
               }else{
-                this.$toast('无此类型的商品')
+                this.$toast('无此类型的手办')
               }
             },
             async goodShow(){

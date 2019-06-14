@@ -9,13 +9,13 @@
         </start>
     </Heads>
     <div class="mygoods">
-        <!-- <mt-header title="我的商品" style="background:#35495e">
+        <!-- <mt-header title="我的手办" style="background:#35495e">
             <router-link to="/user/goods" slot="left">
                 <mt-button icon="back">返回</mt-button>
             </router-link>
         </mt-header> -->
-        <mt-field label="商品名称" placeholder="请输入商品名称" v-model="sname"  style="border:1px solid #ccc"></mt-field>
-        <!-- <mt-field label="商品图片" placeholder="" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border:1px solid #ccc;border-top:none"></mt-field> -->
+        <mt-field label="手办名称" placeholder="请输入手办名称" v-model="sname"  style="border:1px solid #ccc"></mt-field>
+        <!-- <mt-field label="手办图片" placeholder="" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border:1px solid #ccc;border-top:none"></mt-field> -->
         <UpImg v-bind:G_Id="G_Id" v-bind:Imglist="Imglist"></UpImg>
         <mt-field label="价格" placeholder="请输入价格" v-model="price" type="number"  style="border:1px solid #ccc;"></mt-field>
         <mt-field label="数量" placeholder="请输入数量" v-model="num" type="number"  style="border:1px solid #ccc;border-top:none"></mt-field>

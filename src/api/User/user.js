@@ -26,11 +26,23 @@ export const delGoods = data => {
 export const addGoods = data => {
   return axios.post('/Goods/addgood',data)
 }
+export const getdynamics = data => {
+  return axios.post('/Goods/getdynamics')
+}
+export const addDynamics = data => {
+  return axios.post('/Goods/addDynamic',data)
+}
 export const upimg = data => {
   return axios.post('/Goods/upimg',data)
 }
 export const delimg = data => {
   return axios.post('/Goods/delimg',data)
+}
+export const dyupimg = data => {
+  return axios.post('/Goods/dyupimg',data)
+}
+export const dydelimg = data => {
+  return axios.post('/Goods/dydelimg',data)
 }
 export const updatelike = data => {
   return axios.post('/Goods/updatelike',data)

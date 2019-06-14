@@ -10,11 +10,11 @@
         </mt-cell> -->
          <Content ScrollY>
         <mt-field label="店铺名称" placeholder="请输入店铺名称" v-model="sname"  style="border:1px solid #ccc"></mt-field>
-        <div @click="xz"><mt-cell title="添加商品" is-link :value="add ? add : '请选择商品'" style="border:1px solid #ccc;border-top:none;width:80%;float:left;"></mt-cell></div>
+        <div @click="xz"><mt-cell title="添加手办" is-link :value="add ? add : '请选择手办'" style="border:1px solid #ccc;border-top:none;width:80%;float:left;"></mt-cell></div>
         <mt-button type="primary" size="large" @click="addd"  style="float:left;width:20%;height:48px;background:#ff88bb">添加</mt-button>
         <div style="clear:both"></div>
-        <!-- <mt-field label="商品列表" placeholder="请输入手机号" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border:1px solid #ccc"></mt-field> -->
-        <mt-cell title="商品列表:"  style="border:1px solid #ccc;border-top:none">
+        <!-- <mt-field label="手办列表" placeholder="请输入手机号" v-model="mob" type="tel" :attr="{ maxlength: 11 }" style="border:1px solid #ccc"></mt-field> -->
+        <mt-cell title="手办列表:"  style="border:1px solid #ccc;border-top:none">
         </mt-cell>
         <ul class="goods-list">
             <li v-for="(item,index) in shopgoods" :key='index'>
@@ -73,7 +73,7 @@ export default{
         //上架
         async addd(){
             if(this.addgid==''){
-                this.$toast('请选择商品')
+                this.$toast('请选择手办')
                 return
             }
             if(this.shopmsg==''){
@@ -152,7 +152,7 @@ export default{
             if(a.data.result==1){
                 this.$toast(a.data.info);
                 this.$router.push({
-                    path:'/user'
+                    path:'/'
                 })
             }else if(a.data.result==2){
                 this.getShopMsg();

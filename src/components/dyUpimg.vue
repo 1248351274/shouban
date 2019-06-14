@@ -18,7 +18,7 @@
 <script >
 import {mapGetters, mapActions} from 'vuex'
 import * as TYPES from '../store/type'
-import {upimg,delimg} from '@/api/User/user'
+import {dyupimg,dydelimg} from '@/api/User/user'
 export default{
     name:'upimg',
     data:function(){
@@ -28,7 +28,7 @@ export default{
         }
     },
     props:{
-      G_Id:{
+      dy_Id:{
         type:String
       },
       Imglist:{
@@ -40,13 +40,13 @@ export default{
           console.log('jian')
           let l = this.ip.length;
           let data = {
-            G_Id : this.G_Id,
-            Image_Location : this.imgs[item].substr(21)
+            dy_Id : this.dy_Id,
+            dy_imgLocation : this.imgs[item].substr(21)
           }
-          let a = await delimg(data);
+          let a = await dydelimg(data);
           if(a.data.result==1){
             this.$toast('删除成功');
-            this.$store.commit(TYPES.DELIMG,a.data.id);
+            this.$store.commit(TYPES.DELDYIMG,a.data.id);
             this.imgs.splice(item,1);
 
           }else{
@@ -61,19 +61,18 @@ export default{
             var img1=event.target.files[0];
             reader.readAsDataURL(img1);
             var that=this;
-
             reader.onloadend=async function(){
-                console.log('that.G_Id', that.G_Id)
+                console.log(' that.dy_Id', that.dy_Id)
                 let data = {
                   uploadedfile : reader.result,
-                  G_Id : that.G_Id
+                  dy_Id : that.dy_Id
                 }
                 console.log('data',data);
-                let a = await upimg(data);
+                let a = await dyupimg(data);
                 if(a.data.result==1){
                   // that.$toast('上传成功');
                   that.imgs.push(that.ip+a.data.info);
-                  that.$store.commit(TYPES.ADDIMG,a.data.id);
+                  that.$store.commit(TYPES.ADDDYIMG,a.data.id);
                 }else{
                   that.$toast(a.data.info);
                 }
@@ -83,7 +82,7 @@ export default{
     },
     mounted(){
       this.imgs = this.Imglist;
-      this.$store.commit(TYPES.RESETIMG);
+      this.$store.commit(TYPES.RESETDYIMG);
       this.ip = this.config.ip;
     }
 

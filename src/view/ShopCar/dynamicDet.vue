@@ -7,13 +7,9 @@
         </mt-header>
         <Content ScrollY>
         <mt-field  placeholder="这一刻的想法..." type="textarea" rows="5" v-model="introduction" style="margin-bottom:10px"></mt-field>
-        <UpImg v-bind:G_Id="G_Id" v-bind:Imglist="Imglist"></UpImg>
-
+        <dyUpImg v-bind:dy_Id="dy_Id" v-bind:Imglist="Imglist"></dyUpImg>
         <!-- <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
         <div @click="sub"><mt-button class="subButton" size="large">发布</mt-button></div>
-     {{footer}}
-{{userMsg}}
-
         <!-- <div v-for="item in userMsg" :key="item">
           item {{item}}
         </div> -->
@@ -23,12 +19,12 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import * as TYPES from '@/store/type'
-import {addGoods,getTypes} from '@/api/User/user'
+import {addDynamics,getTypes} from '@/api/User/user'
 import { Picker } from 'mint-ui'
-import UpImg from '@/components/upimg'
+import dyUpImg from '@/components/dyUpimg'
 export default{
     components: {
-        UpImg
+        dyUpImg
     },
     data (){
         return {
@@ -43,7 +39,7 @@ export default{
             stime2:'',
             //slots:[{values:[]}],
             slots:[],
-            G_Id:'0',
+            dy_Id:'0',
         }
     },
     created () {
@@ -70,30 +66,19 @@ export default{
           this.type=values[0];
         },
         async sub(){
-            // let data = {
-            //     // Goods_Time: this.stime1 + this.stime2,
-            //     Goods_Name: this.Mname,
-            //     Goods_Price: this.price,
-            //     Goods_Type: this.type,
-            //     Goods_Num: this.num,
-            //     Goods_Remarks: this.introduction,
-            //     Goods_Imgid: this.$store.getters.imgid,
-            //     Goods_Time: new Date().getTime()
-            // };
-            //console.log(data)
-            // let b = await addGoods(data)
-            // if(b.status==200){
-            //     this.$toast('添加成功')
-            //     this.$router.push({
-            //         path:'/'
-            //     })
-            // }else{
-            //     this.$toast('添加失败')
-            // }
-            console.log('store',this.$store)
-            console.log('mapGetters',this.mapGetters)
-            this.$store.commit(TYPES.USERMSG)
-            console.log('userMsg21',this.$store.getters.userMsg)
+            let data = {
+                Dynamic_Content: this.introduction,
+                Dy_Imgid: this.$store.getters.dyimgid,
+            };
+            let b = await addDynamics(data)
+            if(b.status==200){
+                this.$toast('添加成功')
+                this.$router.push({
+                    path:'/'
+                })
+            }else{
+                this.$toast('添加失败')
+            }
         },
         async gettype(){
           let a = await getTypes();

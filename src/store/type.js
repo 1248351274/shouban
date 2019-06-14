@@ -9,9 +9,15 @@ export const CLEAR_CAR='CLEAR_CAR' //清空商品数量
 export const LOGIN = 'LOGIN'  //登录
 export const LOGOUT = 'LOGOUT'  //登出
 export const LOGINID = 'loginID'  //接受loginID
+
 export const ADDIMG = 'ADDIMG'
 export const DELIMG = 'DELIMG'
 export const RESETIMG = 'RESETIMG'
+
+export const ADDDYIMG = 'ADDDYIMG'
+export const DELDYIMG = 'DELDYIMG'
+export const RESETDYIMG = 'RESETDYIMG'
+
 export const FOOT_DISPLAY = 'FOOT_DISPLAY'
 export const FOOT_HIDE = 'FOOT_HIDE'
 export const USERMSG = 'USERMSG'//用户注册信息

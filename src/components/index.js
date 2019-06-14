@@ -6,6 +6,7 @@ import addCart from './addCart'
 import search from './public/search'
 import Icon from './public/Icon'
 import Avatar from './public/Avatar'
+import Dyupimg from './dyUpimg'
 import rate from './rate'
 import upimg from './upimg'
 
@@ -19,7 +20,8 @@ const components = {
     Avatar,
     addCart,
     rate,
-    upimg
+    upimg,
+    Dyupimg
 }
 
 export default {

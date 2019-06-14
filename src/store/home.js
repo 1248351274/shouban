@@ -10,6 +10,7 @@ const state = {
     token: null,
     loginid: null,
     imgid:[],  //上传的图片id
+    dyimgid:[],//动态上传照片id
     footer:true,
     userMsg: []
 };
@@ -23,6 +24,7 @@ const getters = {
         return state.shop_num.find(item => item.Goods_Id === Goods_Id)
     },
     imgid: state => state.imgid,
+    dyimgid: state => state.dyimgid,
     footer: state => state.footer,
     userMsg: state => state.userMsg
 }
@@ -88,6 +90,23 @@ const mutations = {
     [TYPES.RESETIMG](state) {
       state.imgid = [];
     },
+
+    [TYPES.ADDDYIMG](state,id) {
+        state.dyimgid.push(id);
+      },
+    [TYPES.DELDYIMG](state,id) {
+        let arr = state.dyimgid;
+        for(let i=0;i<arr.length;i++){
+          if(arr[i]==id){
+            arr.splice(i,1)
+          }
+        }
+        state.dyimgid = arr;
+      },
+      [TYPES.RESETDYIMG](state) {
+        state.dyimgid = [];
+      },
+
     [TYPES.TO_DETAIL](state, opt) {
         // state.isBlock = !state.isBlock;
         state.msg = opt;

@@ -202,7 +202,7 @@ export default {
     },
     confirmOrder() {
       if (this.buyList.length === 0) {
-        MessageBox("提示", "请先选择购买商品");
+        MessageBox("提示", "请先选择购买手办");
         return;
       }
       MessageBox.confirm(`确认购买共:${this.totalNum}元`).then(async res => {

@@ -5,7 +5,7 @@
             <img :src="ip+banner.Ban_Url" :alt="banner.Ban_Name">
             </mt-swipe-item>
         </mt-swipe>
-         <Search></Search>
+         <!-- <Search></Search> -->
         <div class="type-list">
             <div @click='ser(item.GT_Id)' v-for="(item,index) in typeList" :key='index' class="list" >
                 <span class="icon" :style="{background:'url('+ip+item.GT_Image+')',backgroundSize:'cover'} "></span>
@@ -114,7 +114,7 @@
 
               }else{
                 console.log('serelse');
-                this.$toast('无此类型的商品')
+                this.$toast('无此类型的手办')
               }
             },
            async select(item, index) {
@@ -224,11 +224,11 @@
             // }
         },
         created () {
+            console.log('ip+banner.Ban_Url',this.ip+this.banner)
             this.a();
             this.getBanner();
             this.getType();
-            this.goodShow();
-            
+            this.goodShow();   
         }
     }
 </script>
@@ -237,25 +237,18 @@
 @import '@/style/var.scss';
 
     .ban-content {
-        // display: flex;
-        // flex-direction: column;
         .mint-swipe{
-            // display: flex;
-            // justify-content: center;
-            // background: #e8380d;
-            // border:1px red #f89e62;
+            position: none;
+            overflow: visible;
             height: 200px;
             width:100%;
             img {
                 width: 100%;
                 height: 200px;
             }
-            // .mint-swipe-indicators {
-            //     bottom: 2px;
                 .mint-swipe-indicator{
                     opacity: .6;
                 }
-            // }
         }
         .type-list {
             flex: 3;
@@ -265,7 +258,7 @@
             flex-flow: row wrap;
             justify-content: space-around;
             align-items: center;
-            background: #fff;
+            background: rgb(250, 245, 245);
             // background: red;
             .list {
                     display: flex;
@@ -286,8 +279,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-color: #fdfcfc;
+            background-color: #f1f0f0;
             .goods-items {
+                background-color: #ffffff;
                 // overflow: auto;
                 h4 {
                     padding: 0 10px;

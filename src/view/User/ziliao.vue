@@ -78,7 +78,8 @@ export default{
             if(b.data.result==1){
                 this.$toast(b.data.info);
                 this.$router.push({
-                    path:'/user'
+                    path:'/'
+                    // query:[tabIndex=1]
                 })
             }else{
                 this.$toast(b.data.info);

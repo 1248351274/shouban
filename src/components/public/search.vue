@@ -50,5 +50,9 @@
     font-size: 18px;
     padding-left:10px;
   }
+  .mint-searchbar-cancel {
+    font-size: 20px;
+    color: #ffffff;
+  }
 }
 </style>

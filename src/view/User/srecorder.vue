@@ -23,7 +23,7 @@
                 <div class="content">
                   <img :src="ip+item.Img" alt="">
                   <div class="conin">
-                    <span>商品：{{item.G_Name}}</span><br>
+                    <span>手办：{{item.G_Name}}</span><br>
                     <span>数量：{{item.Order_Num}}</span>&nbsp;&nbsp;&nbsp;
                     <span>价格：￥{{item.Order_Price}}</span><br>
                     <span>评价：{{item.eva}}星</span><br>

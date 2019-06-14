@@ -5,85 +5,56 @@
             <mt-button @click="goBack">返回</mt-button>
         </router-link>
       </mt-header>
-    <!-- <heads :title=title></heads> -->
-    <!-- <transition name="fade"> -->
       <Content ScrollY>
         <div>
             <div class="detail-pages">
                 <div class="detail">
-               
-                    <!-- <div class="title-Div">
-                      <img :src=ip+demsg.User_Image alt="" class="joinCar">
-                      <span class="tit">{{demsg.User_Name}}</span>
-                      <img src="@/assets/hand.jpg" alt="" class="joinCar">
-                      <mt-button @click="goBack" class="joinCar">加入清单</mt-button>
-                    </div> -->
-                    <!-- <div class="price-Div">
-                      <span >价格：</span>
-                      <span>日期：</span>
-                    </div> -->
-                    <!-- <div v-for="(url,index) in detailMsg.img" :key="index" class="imgs">
-                      <img :src="ip+url.Image_Location" alt="" class="goods-img">
-                        <mt-swipe :auto="4000">
-                            <mt-swipe-item v-for="(url,index) in detailMsg.img" :key="index">
-                                <img :src="ip+url.Image_Location" alt="">
-                            </mt-swipe-item>
-                        </mt-swipe>
-                    </div> -->
                     <div class="detail">
                         <mt-swipe :auto="4000">
                             <mt-swipe-item v-for="(url,index) in detailMsg.img" :key="index">
-            
                                 <img :src="ip+url.Image_Location" alt="">
                             </mt-swipe-item>
                         </mt-swipe>
                     </div>
-                   
                     <div class="introduce">
                         <p class="introdice-name">{{detailMsg.Goods_Name}}</p>
                         <p class="introdice-detail">{{detailMsg.Goods_Remarks}}</p>
                         <p class="introdice-price">¥{{detailMsg.Goods_Price}}</p>
                     </div>
-                    <!-- <span>控控introduce</span>
-                    <table border="1">
-                      <tr>
-                        <th>店铺名称</th>
-                        <th>Savings</th>
-                      </tr>
-                      <tr>
-                        <td>产品名</td>
-                        <td>$100</td>
-                      </tr>
-                      <tr>
-                        <td>官方价格</td>
-                        <td>$100</td>
-                      </tr>
-                      <tr>
-                        <td>上新时间</td>
-                        <td>$100</td>
-                      </tr>上新时间
-                    </table> -->
                     <mt-navbar v-model="selected">
-                      <mt-tab-item id="1">商品详情</mt-tab-item>
+                      <mt-tab-item id="1">手办详情</mt-tab-item>
                       <mt-tab-item id="2">卖家信息</mt-tab-item>
                     </mt-navbar>
                     <mt-tab-container v-model="selected">
                       <mt-tab-container-item id="1">
-                        <mt-cell title="所属店铺" :value="demsg.shop"> 核中有壳</mt-cell>
-                        <mt-cell title="好评率" :value="demsg.eva">100%</mt-cell>
+                        <mt-cell title="所属用户" :value="demsg.shop"> {{demsg.User_Name}}</mt-cell>
+                        <mt-cell title="好评率" :value="demsg.eva">{{demsg.eva}}</mt-cell>
                       </mt-tab-container-item>
                       <mt-tab-container-item id="2">
-                        <!-- <rate :grade="3"/> -->
-                        <mt-cell :title="demsg.User_Name" style="height:50px" value="联系卖家" is-link >
-                          <img slot="icon" width="30" height="30" style="border-radius:50%;" :src="ip+demsg.User_Image">
+                        <!-- <rate :grade="3"/> --> 
+                        <div @click="popupVisible=!popupVisible">
+                        <mt-cell :title="demsg.User_Name" style="height:50px" value="联系卖家"  >
+                          <img slot="icon" width="30" height="30" style="border-radius:50%;" :src="ip+demsg.User_Image"  @click="telShow">
                         </mt-cell>
-                        <mt-badge type="warning" >10</mt-badge>
+                        </div>
+                        <div v-if="popupVisible">
+                          <span style="font-size:20px;text-align:center" >{{demsg.User_Tel}}</span>
+                        </div>
+                        <mt-popup
+            
+                            :closeOnClickModal=popupVisible
+                            popup-transition="popup-fade">
+                            <template>
+                              <div>123</div>
+                            </template>
+                          </mt-popup>
+                        <!-- <mt-badge type="warning" >10</mt-badge> -->
                       </mt-tab-container-item>
                     </mt-tab-container>
                 </div>
                 <div class="handle">
                     <div class="cart" @click="toBuy(detailMsg)">加入手办库</div>
-                    <div class="order" @click="toShopCar">立即带走</div>
+                    <!-- <div class="order" @click="toShopCar">立即带走</div> -->
                 </div>
             </div>
             <addCart :shopMsg="detailMsg"></addCart>
@@ -103,6 +74,7 @@ export default {
   name: "goods-detail",
   data() {
     return {
+      popupVisible: false,
       detailMsg: [],
       ip: [],
       selected: '1',
@@ -158,8 +130,13 @@ export default {
       //this.detailMsg = this.$store.getters.msg.options;
       //this.$store.commit("toShopCar", this.detailMsg);
       this.$store.commit(TYPES.FOOT_DISPLAY);
-      this.$router.push("/shopCar");
+      this.$router.push("/");
 
+    },
+    telShow(){
+      console.log(this.popupVisible)
+      this.popupVisible=true
+      console.log(this.popupVisible)
     },
     async a() {
       this.detailMsg = JSON.parse(this.$route.query.msg);
@@ -260,6 +237,7 @@ export default {
       }
       .introdice-detail {
         color: #555;
+        font-size: 18px;
       }
       .introdice-price {
         font-size: 18px;
@@ -306,8 +284,8 @@ export default {
     color: #fff;
     box-shadow: 0 -1px 10px 1px #ddd;
     .cart {
-      float: left;
-      width: 50%;
+      // float: left;
+      // width: 50%;
       background: #ff88bb;
     }
     .order {

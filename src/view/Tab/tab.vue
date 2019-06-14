@@ -3,10 +3,11 @@
     <!-- <transition name="fade"> -->
       <!-- <heads :title=title></heads> -->
     <mt-header :title=title class="headerColor">
-        <router-link to="/dynamicDet" slot="right" v-if="this.$route.query.id==1">
+        <router-link to="/dynamicDet" slot="right" v-if="this.tabIndex==1">
             <mt-button >发布</mt-button>
         </router-link>
     </mt-header>
+
       <home v-if="this.tabIndex==0"/>
       <!-- <dynamic v-if="this.$route.query.id==1"/>
       <shopCar v-if="this.$route.query.id==2"/>
@@ -22,6 +23,8 @@ import home from '@/view/Index/home'
 import dynamic from '@/view/ShopCar/dynamic'
 import shopCar from '@/view/ShopCar/shopCar'
 import user from '@/view/user/index'
+import {mapState, mapGetters, mapActions} from 'vuex'
+import {getType,goodShow,getBanner} from '@/api/Home/home'
 export default {
   name: 'Tab',
   components: {
@@ -32,6 +35,8 @@ export default {
   },
   data() {
     return{
+      ip:[],
+      bannerList: [],
       tabIndex:0,
       title:'首页',
       can:[
@@ -65,7 +70,11 @@ export default {
             },
           ]
     }
-
+  },
+  created () {
+      console.log('ip+banner.Ban_Url',this.ip+this.banner)
+      this.getBanner()
+      this.a()
   },
   methods: {
       select(item,index){
@@ -91,7 +100,7 @@ export default {
         this.tabIndex = index
         this.title = item.label
         // this.$route.query.id = index
-        console.log(this.$router)
+        console.log('$router',this.$route)
 
       }
   },
@@ -99,6 +108,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

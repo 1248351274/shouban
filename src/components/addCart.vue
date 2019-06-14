@@ -22,7 +22,7 @@
                         合计:
                         <span class="price">¥{{$store.getters.shop_num*shopMsg.Goods_Price}}</span>
                     </div>
-                    <span class="order" @click="toShopCar(shopMsg)">立即购买</span>
+                    <span class="order" @click="toShopCar(shopMsg)">加入手办库</span>
                 </div>
             </div>
         </div>
@@ -50,8 +50,13 @@
         methods: {
             //...mapActions(['toBuy', 'toShopCar']),
             toShopCar(){
-                this.sub();
-                this.$router.push('/shopcar');
+                if(this.$store.getters.shop_num==0){
+                    this.$toast('请添加数量')
+                }else{
+                    this.sub();
+                    this.$toast('加入手办库成功')
+                }
+
             },
             async sub(){
               if(this.$store.getters.shop_num!=0){
@@ -150,8 +155,9 @@
                             height: 25px;
                             text-align: center;
                             background: rgb(238, 238, 238);
+                            line-height: 25px;
                             border-radius: 50%;
-                            font-weight: 100;
+                            font-size: 20px;
                             color: #fff;
                         }
                         .active {
@@ -159,17 +165,18 @@
                         }
                         .num {
                             margin: 0 10px;
-                            line-height: 30px;
+                            // line-height: 30px;
                             font-size: 20px;
                         }
                         .jia {
                             display: inline-block;
                             width: 25px;
                             height: 25px;
+                            line-height: 25px;
                             text-align: center;
                             background: rgb(18, 150, 219);
                             border-radius: 50%;
-                            font-weight: 100;
+                            font-size: 20px;
                             color: #fff;
                         }
                     }
@@ -193,7 +200,7 @@
                     width: 50%;
                     text-align: center;
                     color: #fff;
-                    background-color: #e8380d;
+                    background-color: #fc91c6;
                 }
             }
         }

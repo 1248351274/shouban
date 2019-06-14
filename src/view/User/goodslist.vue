@@ -16,7 +16,7 @@
               <img
                   src="@/assets/kong.png"
                   style = 'width:40%;'
-                  alt="商品列表为空">
+                  alt="手办列表为空">
           </p>
           <ul v-if="goodslist.length!=0">
             <li v-for="(item,index) in goodslist" :key="index">
@@ -145,7 +145,7 @@ export default{
             if(b.data.result==1){
                 this.$toast(b.data.info);
                 this.$router.push({
-                    path:'/user'
+                    path:'/'
                 })
             }else{
                 this.$toast(b.data.info);
